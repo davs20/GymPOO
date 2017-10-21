@@ -5,19 +5,15 @@ import java.util.regex.Pattern;
 
 public class Validator {
 
-    public String nombre_usuario;
 
-    public Validator(String nombre_usuario) {
-        this.nombre_usuario=nombre_usuario;
-    }
 
-    private Boolean validacion(String exRegular) {
+    protected Boolean validacion(String exRegular,String cadena) {
         Pattern valida = Pattern.compile(exRegular);
-        Matcher comprobacion = valida.matcher(exRegular);
+        Matcher comprobacion = valida.matcher(cadena);
         if (comprobacion.matches()) {
             return true;
         } else {
-            throw new IllegalArgumentException();
+            return false;
         }
     }
 

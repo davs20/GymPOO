@@ -2,6 +2,10 @@ package sample.Controller;
 
 public class MembresiaController {
 
+    public void nueva(){
+
+    }
+
     public  void  editar(){
 
     }

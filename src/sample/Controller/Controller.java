@@ -34,7 +34,7 @@ public class Controller {
 
     public Button boton;
 
-    protected static String url="../sample/View/";
+    protected static String urlbase="../sample/View/";
 
 
     protected void da(ActionEvent actionEvent) throws SQLException {

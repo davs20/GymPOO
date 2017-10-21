@@ -5,7 +5,7 @@ import javafx.scene.Parent;
 
 import java.io.IOException;
 
-import static sample.Controller.Controller.url;
+import static sample.Controller.Controller.urlbase;
 
 public class ControllerEntrenador {
 
