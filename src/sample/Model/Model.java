@@ -1,15 +1,10 @@
-package sample.modelo;
+package sample.Model;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.Initializable;
-import sample.config.Conexion;
-import sample.config.Consulta;
-import sample.config.OperacionesSQl;
 
 import java.net.URL;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Model implements Initializable{

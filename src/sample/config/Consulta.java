@@ -1,7 +1,5 @@
 package sample.config;
 
-import sample.validator.Validator;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 

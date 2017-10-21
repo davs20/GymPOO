@@ -26,7 +26,8 @@
               </columns>
             </TableView>
              <JFXTabPane />
-            <JFXButton fx:id="boton" mnemonicParsing="false" onAction="#da" prefHeight="25.0" prefWidth="61.0" style="-fx-background-color:#04B431" text="Cargar" textFill="WHITE" />
+             <JFXButton fx:id="boton" mnemonicParsing="false" onAction="#da" prefHeight="25.0" prefWidth="61.0"
+                        style="-fx-background-color:#04B431" text="Cargar" textFill="WHITE"/>
          </children>
       </FlowPane>
    </children>

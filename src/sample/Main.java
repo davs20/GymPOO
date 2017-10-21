@@ -5,26 +5,38 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import sample.Controller.Controller;
 
-import java.util.ArrayList;
+import java.io.IOException;
 
 public class Main extends Application {
 
+    static String url="../sample/View/";
     @Override
+
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
+        Parent root = FXMLLoader.load(getClass().getResource(url.concat("login.fxml")));
+        primaryStage.setTitle("Login");
         primaryStage.setScene(new Scene(root, 400, 600));
         primaryStage.show();
         primaryStage.setResizable(false);
 
-    }
 
+
+    }
 
     public static void main(String[] args) {
         launch(args);
 
+    }
+
+    public void autentificar(ActionEvent actionEvent) throws IOException {
+        Parent segunda = FXMLLoader.load(getClass().getResource(url.concat("home.fxml")));
+        Scene nueva = new Scene(segunda);
+        Stage inicio = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+        inicio.setScene(nueva);
+        inicio.show();
     }
 }

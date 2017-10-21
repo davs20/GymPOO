@@ -1,4 +1,4 @@
-package sample.validator;
+package sample.Validator;
 
 public class ValidatorLogin extends  Validator {
     public ValidatorLogin(String nombre_usuario) {

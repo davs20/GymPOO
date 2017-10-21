@@ -1,4 +1,4 @@
-package sample.validator;
+package sample.Validator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
