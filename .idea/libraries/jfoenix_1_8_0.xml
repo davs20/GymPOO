@@ -1,7 +1,8 @@
 <component name="libraryTable">
   <library name="jfoenix-1.8.0">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Downloads/jfoenix-1.8.0.jar!/" />
+      <root url="jar://$USER_HOME$/Documentos/jfoenix-1.8.0.jar!/" />
+      <root url="jar://$USER_HOME$/Descargas/mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

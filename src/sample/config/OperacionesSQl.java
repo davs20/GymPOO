@@ -16,7 +16,6 @@ public class OperacionesSQl extends Conexion {
     private String joinright;
     private static String consulta="";
 
-
     public void update(ArrayList<String> columnas, String tabla, ArrayList<String> valor) {
 
     }
@@ -69,6 +68,11 @@ public class OperacionesSQl extends Conexion {
     public String habilitar(String columnas, String tabla, String where) {
         return "Update into ";
 
+    }
+
+    public OperacionesSQl like(String columna,String valor){
+        String like=" "+columna+" Like ";
+     return  new OperacionesSQl();
     }
 
     public Conexion get() throws SQLException {

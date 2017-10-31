@@ -15,7 +15,7 @@ public class Conexion extends  Configuracion implements CamposTabla{
     public Connection MySQLConnect()  {
         try {
             Class.forName(DbDriver);
-            String servidor = "jdbc:mysql://localhost:3306/becados2";
+            String servidor = "jdbc:mysql://localhost:3306/gympoo";
             String usuario = "root";
             String pass = "";
             conexion = DriverManager.getConnection(servidor, usuario, pass);

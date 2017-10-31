@@ -1,6 +1,16 @@
 package sample.Controller;
 
-public class MembresiaController {
+import javafx.fxml.Initializable;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class MembresiaController implements Initializable {
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 
     public void nueva(){
 
@@ -18,5 +28,6 @@ public class MembresiaController {
     public  void  desabilitar(){
 
     }
+
 
 }

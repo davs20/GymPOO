@@ -1,4 +1,6 @@
 package sample.Validator;
 
-public class ValidatorCliente {
+public class ValidatorCliente extends Validator{
+
+
 }

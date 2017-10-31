@@ -10,15 +10,18 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import sample.Model.ModelUsuario;
 import sample.Validator.Validator;
 import sample.Validator.ValidatorLogin;
+import sample.config.OperacionesSQl;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static java.lang.Boolean.TRUE;
+
 import static sample.Controller.Controller.urlbase;
 
 
@@ -44,28 +47,35 @@ public class ControllerLogin implements Initializable {
         alert.showAndWait();
     }
 
-    public void autentificar(KeyEvent key) throws IOException {
-        ValidatorLogin login = new ValidatorLogin();
-        error.setText(login.usuario(usuario.getText()));
-        if(login.usuario(usuario.getText()).equals("Correcto") && login.contrasena(contrasena.getText()).equals("Correcto") ){
-            entrar.setDisable(false);
-        }else{
-            entrar.setDisable(true);
+    public void autentificar(KeyEvent key) {
+
+        if (ValidatorLogin.validacion("[0-9]{13,13}", usuario.getText())) {
+            error.setText("Correcto");
+            usuario.setFocusColor(new Color(0.3294, 0.1255, 1, 1));
+        } else {
+            error.setText("Incorrecto");
+            usuario.setFocusColor(new Color(1, 0, 0.0235, 1));
         }
+
+        this.estadoBoton();
 
 
     }
-    public void autentificarPass(KeyEvent key){
-        ValidatorLogin login =new ValidatorLogin();
-        login.contrasena(contrasena.getText());
-        if(login.usuario(usuario.getText()).equals("Correcto") && login.contrasena(contrasena.getText()).equals("Correcto") ){
+
+    private void estadoBoton() {
+        if (ValidatorLogin.validacion("[0-9]{13,13}", usuario.getText()) && ValidatorLogin.validacion("([A-Z,a-z,0-9]){10}", contrasena.getText())) {
             entrar.setDisable(false);
-        }else{
+        } else {
             entrar.setDisable(true);
         }
+    }
+
+    public void autentificarPass(KeyEvent key) {
+        estadoBoton();
     }
 
     public void btn() {
+        ModelUsuario usuario = new ModelUsuario();
 
 
     }
@@ -92,4 +102,6 @@ public class ControllerLogin implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         entrar.setDisable(true);
     }
+
 }
+

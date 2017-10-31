@@ -26,7 +26,7 @@
             <Reflection bottomOpacity="0.3" fraction="0.55" topOpacity="0.29" />
          </effect>
       </JFXButton>
-      <JFXTextField fx:id="usuario" layoutX="128.0" layoutY="298.0" onKeyReleased="#autentificar" promptText="ID Usuario" />
+      <JFXTextField fx:id="usuario" focusColor="RED" layoutX="128.0" layoutY="298.0" onKeyReleased="#autentificar" promptText="ID Usuario" />
       <Label fx:id="error" layoutX="127.0" layoutY="335.0" prefHeight="17.0" prefWidth="142.0" />
    </children>
 </AnchorPane>

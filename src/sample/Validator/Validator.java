@@ -6,20 +6,16 @@ import java.util.regex.Pattern;
 public class Validator {
 
 
-
-    protected Boolean validacion(String exRegular,String cadena) {
+    public static Boolean validacion(String exRegular,String cadena) {
+        Boolean h;
         Pattern valida = Pattern.compile(exRegular);
         Matcher comprobacion = valida.matcher(cadena);
         if (comprobacion.matches()) {
             return true;
         } else {
             return false;
+
         }
-    }
-
-    public String getDato() {
-
-        return "das..dasd";
     }
 
 
