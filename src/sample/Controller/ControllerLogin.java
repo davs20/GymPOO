@@ -1,5 +1,6 @@
 package sample.Controller;
 
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -13,9 +14,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.Model.ModelUsuario;
-import sample.Validator.Validator;
 import sample.Validator.ValidatorLogin;
-import sample.config.OperacionesSQl;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,9 +24,9 @@ import java.util.ResourceBundle;
 import static sample.Controller.Controller.urlbase;
 
 
-public class ControllerLogin implements Initializable {
+public class ControllerLogin {
     public JFXTextField usuario;
-    public JFXTextField contrasena;
+    public JFXPasswordField contrasen;
     public Button entrar;
     public Label error;
 
@@ -39,15 +38,8 @@ public class ControllerLogin implements Initializable {
         inicio.show();
     }
 
-    private void mensaje() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText("Look, an Information Dialog");
-        alert.setContentText("I have a great message for you!");
-        alert.showAndWait();
-    }
-
     public void autentificar(KeyEvent key) {
+
 
         if (ValidatorLogin.validacion("[0-9]{13,13}", usuario.getText())) {
             error.setText("Correcto");
@@ -63,7 +55,8 @@ public class ControllerLogin implements Initializable {
     }
 
     private void estadoBoton() {
-        if (ValidatorLogin.validacion("[0-9]{13,13}", usuario.getText()) && ValidatorLogin.validacion("([A-Z,a-z,0-9]){10}", contrasena.getText())) {
+        if (ValidatorLogin.validacion("[0-9]{13,13}", usuario.getText()) &&
+                ValidatorLogin.validacion("[A-Z,a-z,0-9]{10,}", contrasen.getText())) {
             entrar.setDisable(false);
         } else {
             entrar.setDisable(true);
@@ -71,37 +64,36 @@ public class ControllerLogin implements Initializable {
     }
 
     public void autentificarPass(KeyEvent key) {
+
         estadoBoton();
     }
 
-    public void btn() {
-        ModelUsuario usuario = new ModelUsuario();
+    public void iniciarSesion(ActionEvent actionEvent) throws IOException {
+        int intentos = 10;
+        ModelUsuario Usuario = new ModelUsuario(usuario.getText().trim(), contrasen.getText());
+        try {
+            if (Usuario.validarCredenciales(new ValidatorLogin())) {
+                nuevaScena("home.fxml", actionEvent);
 
+            } else {
+                intentos = intentos - Usuario.getIntentos();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Dialogo de Error");
+                alert.setHeaderText("Fue imposible  validar sus credenciales");
+                alert.setContentText("Solo le quedan " + intentos + " intentos");
+                alert.showAndWait();
+            }
+        } catch (NullPointerException a) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Dialogo de Error");
+            alert.setHeaderText("Ha ocurrido error");
+            alert.setContentText("Fue imposible  ejecutar las consultas");
+            alert.showAndWait();
+        }
 
     }
 
-    public void entrenador(ActionEvent actionEvent) throws IOException {
-        nuevaScena("Entrenador/inicio.fxml", actionEvent);
-    }
-
-    public void clientes(ActionEvent actionEvent) throws IOException {
-        nuevaScena("Administrador/Clientes/inicio.fxml", actionEvent);
-
-    }
-
-    public void configuracion(ActionEvent actionEvent) throws IOException {
-        nuevaScena("Configuracion/inicio.fxml", actionEvent);
-    }
-
-    public void ventas(ActionEvent actionEvent) throws IOException {
-        nuevaScena("Ventas/inicio.fxml", actionEvent);
-
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        entrar.setDisable(true);
-    }
 
 }
 

@@ -17,4 +17,36 @@ public class ModelSeguimiento {
         this.peso = peso;
         this.altura = altura;
     }
+
+    public String getIdEntrenador() {
+        return idEntrenador.get();
+    }
+
+    public StringProperty idEntrenadorProperty() {
+        return idEntrenador;
+    }
+
+    public String getIdCliente() {
+        return idCliente.get();
+    }
+
+    public StringProperty idClienteProperty() {
+        return idCliente;
+    }
+
+    public double getPeso() {
+        return peso.get();
+    }
+
+    public DoubleProperty pesoProperty() {
+        return peso;
+    }
+
+    public double getAltura() {
+        return altura.get();
+    }
+
+    public DoubleProperty alturaProperty() {
+        return altura;
+    }
 }

@@ -9,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import com.jfoenix.controls.JFXPasswordField?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="405.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerLogin">
    <children>
       <ImageView fitHeight="209.0" fitWidth="405.0" layoutX="3.0" pickOnBounds="true" preserveRatio="true">
@@ -18,10 +19,10 @@
       </ImageView>
       <Separator layoutX="15.0" layoutY="210.0" prefHeight="27.0" prefWidth="377.0" />
       <Separator layoutX="14.0" layoutY="224.0" orientation="VERTICAL" prefHeight="290.0" prefWidth="7.0" />
-      <JFXTextField fx:id="contrasena" focusColor="#fbb095" layoutX="128.0" layoutY="369.0" onKeyReleased="#autentificarPass" promptText="Contrasena" />
+      <JFXPasswordField fx:id="contrasen" focusColor="#fbb095" layoutX="128.0" layoutY="369.0" onKeyReleased="#autentificarPass" promptText="Contrasena" />
       <Separator layoutX="14.0" layoutY="502.0" prefHeight="27.0" prefWidth="377.0" />
       <Separator layoutX="388.0" layoutY="224.0" orientation="VERTICAL" prefHeight="290.0" prefWidth="7.0" />
-      <JFXButton fx:id="entrar" buttonType="RAISED" layoutX="162.0" layoutY="435.0" mnemonicParsing="false" onAction="#autentificar" prefHeight="37.0" prefWidth="68.0" ripplerFill="#ff2f00" style="-fx-background-color: #fbb095; -fx-border-radius: 24px;" text="Entrar" textFill="WHITE">
+      <JFXButton fx:id="entrar" buttonType="RAISED" layoutX="162.0" layoutY="435.0" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="37.0" prefWidth="68.0" ripplerFill="#ff2f00" style="-fx-background-color: #fbb095; -fx-border-radius: 24px;" text="Entrar" textFill="WHITE">
          <effect>
             <Reflection bottomOpacity="0.3" fraction="0.55" topOpacity="0.29" />
          </effect>

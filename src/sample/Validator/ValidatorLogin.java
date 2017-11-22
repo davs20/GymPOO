@@ -8,7 +8,7 @@ public class ValidatorLogin extends Validator {
 
         if (this.validacion("([0-9]){13,13}", usuario)) {
 
-            return usuario;
+            return "Correcto";
         }
 
         if (usuario.contains("\\s")) {
@@ -22,7 +22,7 @@ public class ValidatorLogin extends Validator {
 
         }
 
-        return "Incorrecto";
+        return null;
 
     }
 
@@ -30,13 +30,12 @@ public class ValidatorLogin extends Validator {
 
 
     public String contrasena(String contrasena) {
-        String menErrorPass = "";
 
-        if (this.validacion("([A-Z,a-z,0-9]{12})\\w+", contrasena)) {
+        if (this.validacion("[A-Z,a-z,0-9]{10,}", contrasena)) {
             return "Correcto";
 
         }
-        return "Incorrecto";
+        return null;
 
     }
 
