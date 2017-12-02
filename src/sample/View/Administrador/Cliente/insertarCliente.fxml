@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="670.0" prefWidth="654.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerDetalleCliente">
+  <children>
+    <MenuBar prefHeight="29.0" prefWidth="610.0" VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="651.0" prefWidth="641.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TabPane layoutY="-1.0" prefHeight="650.0" prefWidth="735.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab fx:id="datPersonales" text="Datos Personales">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="641.0" prefWidth="748.0">
+                           <children>
+                              <ImageView fitHeight="103.0" fitWidth="129.0" layoutX="379.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button fx:id="sig" layoutX="468.0" layoutY="543.0" mnemonicParsing="false" onAction="#datosMedicos" text="Siguiente" />
+                              <ScrollPane layoutX="-1.0" layoutY="-2.0" prefHeight="506.0" prefWidth="735.0">
+                                 <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="603.0" prefWidth="717.0">
+                                       <children>
+                                          <JFXTextField fx:id="idtxt" layoutX="25.0" layoutY="83.0" prefHeight="26.0" prefWidth="562.0" promptText="Numero De Identidad" />
+                                          <JFXTextField fx:id="nombretxt" layoutX="23.0" layoutY="138.0" prefHeight="26.0" prefWidth="562.0" promptText="Nombres" />
+                                          <JFXTextField fx:id="edadtxt" layoutX="22.0" layoutY="251.0" prefHeight="26.0" prefWidth="564.0" promptText="Edad" />
+                                          <JFXDatePicker fx:id="fecha" layoutX="23.0" layoutY="310.0" prefHeight="26.0" prefWidth="565.0" promptText="Fecha" />
+                                          <JFXTextField fx:id="correotxt" layoutX="20.0" layoutY="365.0" prefHeight="26.0" prefWidth="568.0" promptText="Correo Electronico" />
+                                          <JFXTextField fx:id="telefonotxt" layoutX="20.0" layoutY="425.0" prefHeight="26.0" prefWidth="538.0" promptText="Telefono" />
+                                          <JFXTextField fx:id="apellidotxt" layoutX="23.0" layoutY="194.0" prefHeight="26.0" prefWidth="563.0" promptText="Apellidos" />
+                                          <JFXRadioButton layoutX="25.0" layoutY="515.0" mnemonicParsing="false" text="Femenino" />
+                                          <JFXRadioButton layoutX="184.0" layoutY="515.0" mnemonicParsing="false" text="Masculino" />
+                                          <Label layoutX="42.0" layoutY="477.0" prefHeight="16.0" prefWidth="35.0" text="Sexo" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab fx:id="datMedicos" text="Datos Medicos">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <JFXTextField fx:id="pesotxt" layoutX="136.0" layoutY="49.0" prefHeight="26.0" prefWidth="376.0" promptText="Peso" />
+                              <JFXTextField fx:id="fuerzatxt" layoutX="136.0" layoutY="97.0" prefHeight="26.0" prefWidth="377.0" promptText="Fuerza" />
+                              <JFXTextField fx:id="alturatxt" layoutX="134.0" layoutY="155.0" prefHeight="26.0" prefWidth="382.0" promptText="Altura" />
+                              <Label layoutX="135.0" layoutY="216.0" text="Padecimieto" />
+                              <TextArea fx:id="comentariostxt" layoutX="74.0" layoutY="318.0" prefHeight="200.0" prefWidth="543.0" promptText="Comentarios" />
+                              <Button layoutX="451.0" layoutY="539.0" mnemonicParsing="false" onAction="#datosServicio" text="Siguiente" />
+                              <Button layoutX="183.0" layoutY="539.0" mnemonicParsing="false" onAction="#datosPersonales" text="Atras" />
+                              <JFXComboBox fx:id="padecimiento" layoutX="135.0" layoutY="255.0" prefWidth="150.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab fx:id="datServicio" text="Servicio">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="163.0" layoutY="88.0" text="Membresia" />
+                              <Label layoutX="169.0" layoutY="285.0" text="Precio" />
+                              <ImageView fitHeight="116.0" fitWidth="153.0" layoutX="371.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                              <JFXComboBox layoutX="164.0" layoutY="104.0" prefHeight="26.0" prefWidth="309.0" />
+                              <JFXTextField layoutX="166.0" layoutY="207.0" prefHeight="26.0" prefWidth="324.0" />
+                              <JFXTextField layoutX="161.0" layoutY="429.0" prefHeight="26.0" prefWidth="335.0" />
+                              <JFXTextField layoutX="163.0" layoutY="309.0" prefHeight="26.0" prefWidth="330.0" />
+                              <JFXTimePicker layoutX="514.0" layoutY="372.0" prefHeight="29.0" prefWidth="174.0" />
+                              <Label layoutX="169.0" layoutY="191.0" text="Duracion" />
+                              <Label layoutX="163.0" layoutY="401.0" text="Tiempo Restante" />
+                              <Button layoutX="219.0" layoutY="529.0" mnemonicParsing="false" onAction="#atrasDatMedicos" text="atras" />
+                              <Button layoutX="309.0" layoutY="529.0" mnemonicParsing="false" text="Guardar" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>

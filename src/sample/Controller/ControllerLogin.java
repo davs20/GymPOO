@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.Model.ModelUsuario;
@@ -24,7 +25,7 @@ import java.util.ResourceBundle;
 import static sample.Controller.Controller.urlbase;
 
 
-public class ControllerLogin {
+public class ControllerLogin implements  Initializable {
     public JFXTextField usuario;
     public JFXPasswordField contrasen;
     public Button entrar;
@@ -36,6 +37,7 @@ public class ControllerLogin {
         Stage inicio = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         inicio.setScene(nueva);
         inicio.show();
+
     }
 
     public void autentificar(KeyEvent key) {
@@ -68,32 +70,43 @@ public class ControllerLogin {
         estadoBoton();
     }
 
-    public void iniciarSesion(ActionEvent actionEvent) throws IOException {
-        int intentos = 10;
-        ModelUsuario Usuario = new ModelUsuario(usuario.getText().trim(), contrasen.getText());
-        try {
-            if (Usuario.validarCredenciales(new ValidatorLogin())) {
-                nuevaScena("home.fxml", actionEvent);
 
-            } else {
-                intentos = intentos - Usuario.getIntentos();
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Dialogo de Error");
-                alert.setHeaderText("Fue imposible  validar sus credenciales");
-                alert.setContentText("Solo le quedan " + intentos + " intentos");
-                alert.showAndWait();
+    public void iniciarSesion(ActionEvent actionEvent) {
+        try {
+            ModelUsuario user=ModelUsuario.validarCredenciales(new ValidatorLogin(), usuario.getText(), contrasen.getText());
+            switch (user.getIdPrivilegio()) {
+                case "1":
+                    nuevaScena("home.fxml", actionEvent);
+                    break;
+                case "2":
+                    nuevaScena("Cajero/HomeCajero.fxml", actionEvent);
+                    break;
+                case "3":
+                    nuevaScena("Entrenador/homeEntrenador.fxml", actionEvent);
+                    break;
+
             }
         } catch (NullPointerException a) {
-
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Dialogo de Error");
             alert.setHeaderText("Ha ocurrido error");
-            alert.setContentText("Fue imposible  ejecutar las consultas");
+            alert.setContentText("Fue imposible  Validar sus Credenciales ");
+            alert.showAndWait();
+
+        }catch (IOException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Dialogo de Error");
+            alert.setHeaderText("Ha ocurrido error");
+            alert.setContentText(e.toString());
             alert.showAndWait();
         }
 
     }
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 }
 

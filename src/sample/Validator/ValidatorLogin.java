@@ -17,10 +17,6 @@ public class ValidatorLogin extends Validator {
 
         }
 
-        if (usuario.length() > 13) {
-            String valida []=usuario.split("\\s");
-
-        }
 
         return null;
 

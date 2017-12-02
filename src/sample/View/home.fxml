@@ -68,7 +68,7 @@
       </Pane>
       <Pane prefHeight="62.0" prefWidth="1132.0" style="-fx-background-color: darkorange">
          <children>
-            <ChoiceBox opacity="0.4" prefHeight="62.0" prefWidth="202.0" />
+            <ChoiceBox fx:id="userName" opacity="0.4" prefHeight="62.0" prefWidth="202.0" />
             <Label layoutX="77.0" layoutY="18.0" prefHeight="26.0" prefWidth="94.0" text="User" textFill="WHITE">
                <font>
                   <Font name="Roboto Regular" size="13.0" />

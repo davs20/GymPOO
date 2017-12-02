@@ -46,7 +46,7 @@ public class ControllerEntrenador implements Initializable {
 
     private ObservableList<ModelCliente> listaclientes;
     public JFXTextField buscar;
-
+    public Button boton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -54,7 +54,17 @@ public class ControllerEntrenador implements Initializable {
 
         listaclientes = FXCollections.observableArrayList();
         try {
-            ModelCliente.mostrarTodos(listaclientes);
+            boton.setStyle("-fx-background-color: #3793ff; -fx-background-radius: 17%;");
+            boton.setTextFill(new Color(1, 1, 1, 1));
+
+            boton.setOnAction(new javafx.event.EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    System.out.println("hola");
+                }
+            });
+
+            ModelCliente.mostrarTodos(listaclientes,tbl);
         } catch (SQLException e) {
             e.printStackTrace();
         }

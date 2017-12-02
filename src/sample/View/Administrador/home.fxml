@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -9,7 +10,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.Button?>
 <AnchorPane prefHeight="768.0" prefWidth="1132.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerHome">
    <children>
       <Pane fx:id="ventas" layoutX="145.0" layoutY="207.0" onMouseClicked="#ventas" prefHeight="184.0" prefWidth="186.0" style="-fx-background-color: linear-gradient(to bottom, rgba(255,183,107,1) 0%,rgba(255,167,61,1) 50%,rgba(255,124,0,1) 51%,rgba(255,127,4,1) 100%)">
@@ -38,7 +38,7 @@
                </font>
             </Label>
          </children></Pane>
-      <Pane layoutX="805.0" layoutY="207.0"  prefHeight="184.0" prefWidth="186.0" style="-fx-background-color: linear-gradient(to bottom, rgba(255,183,107,1) 0%,rgba(255,167,61,1) 50%,rgba(255,124,0,1) 51%,rgba(255,127,4,1) 100%)">
+      <Pane layoutX="805.0" layoutY="207.0" prefHeight="184.0" prefWidth="186.0" style="-fx-background-color: linear-gradient(to bottom, rgba(255,183,107,1) 0%,rgba(255,167,61,1) 50%,rgba(255,124,0,1) 51%,rgba(255,127,4,1) 100%)">
          <children>
             <ImageView fitHeight="87.0" fitWidth="87.0" layoutX="50.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -65,7 +65,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="473.0" layoutY="495.0"  prefHeight="184.0" prefWidth="186.0" style="-fx-background-color: linear-gradient(to bottom, rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%)">
+      <Pane layoutX="473.0" layoutY="495.0" prefHeight="184.0" prefWidth="186.0" style="-fx-background-color: linear-gradient(to bottom, rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%)">
          <children>
             <ImageView fitHeight="79.0" fitWidth="94.0" layoutX="54.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -110,10 +110,5 @@
             <JFXHamburger layoutX="1061.0" prefHeight="62.0" prefWidth="71.0" />
          </children>
       </Pane>
-      <ImageView fitHeight="184.0" fitWidth="202.0" layoutX="473.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../Descargas/logo.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>
