@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -14,11 +15,10 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="678.0" prefWidth="1160.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="749.0" prefWidth="1160.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerFactura">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -38,10 +38,10 @@
             <MenuItem mnemonicParsing="false" text="Quit" />
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
+        <Menu mnemonicParsing="false" text="Cuenta">
           <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
+            <MenuItem mnemonicParsing="false" text="Cerrar Sesion" />
+            <MenuItem mnemonicParsing="false" text="Perfil" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" text="Cut" />
             <MenuItem mnemonicParsing="false" text="Copy" />
@@ -52,7 +52,7 @@
             <MenuItem mnemonicParsing="false" text="Unselect All" />
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Help">
+        <Menu mnemonicParsing="false" text="Acerca">
           <items>
             <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
           </items>
@@ -61,39 +61,39 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefWidth="667.0" VBox.vgrow="ALWAYS">
          <children>
-            <Button layoutX="179.0" layoutY="117.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" text="Nuevo Cliente" />
-            <TextField layoutX="23.0" layoutY="117.0" prefHeight="26.0" prefWidth="149.0" promptText="Id Cliente" />
+            <JFXButton fx:id="nuevoCliente" layoutX="179.0" layoutY="117.0" mnemonicParsing="false" onAction="#nuevoCliente" prefHeight="26.0" prefWidth="110.0" text="Nuevo Cliente" />
+            <JFXTextField fx:id="buscar" layoutX="23.0" layoutY="117.0" onKeyReleased="#buscar" prefHeight="26.0" prefWidth="149.0" promptText="Id Cliente" text="Cliente" />
             <Label layoutX="78.0" layoutY="26.0" text="Seleccionar Al Cliente" />
             <Separator layoutX="289.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="586.0" prefWidth="21.0" />
-            <TableView layoutX="23.0" layoutY="177.0" prefHeight="200.0" prefWidth="251.0">
+            <TableView fx:id="tblCliente" layoutX="23.0" layoutY="177.0" prefHeight="200.0" prefWidth="251.0">
               <columns>
-                <TableColumn prefWidth="125.00003051757812" text="C1" />
-                <TableColumn prefWidth="124.0" text="C2" />
+                <TableColumn fx:id="nombre" prefWidth="125.00003051757812" text="Nombre" />
+                <TableColumn fx:id="id" prefWidth="124.0" text="Id" />
               </columns>
             </TableView>
-            <Button layoutX="742.0" layoutY="571.0" mnemonicParsing="false" text="Nueva Venta" />
-            <TabPane layoutX="311.0" layoutY="291.0" prefHeight="268.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE">
+            <JFXButton fx:id="nuevaVenta" layoutX="995.0" layoutY="661.0" mnemonicParsing="false" onAction="#nuevaVenta" text="Nueva Venta" />
+            <TabPane layoutX="314.0" layoutY="377.0" prefHeight="268.0" prefWidth="802.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                <Tab text="Ventas">
+                <Tab text="Venta">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView layoutY="1.0" prefHeight="234.0" prefWidth="797.0">
+                              <TableView fx:id="tblFactura" layoutY="1.0" prefHeight="234.0" prefWidth="797.0">
                                 <columns>
-                                  <TableColumn prefWidth="97.0" text="No. Factura" />
-                                    <TableColumn prefWidth="98.0" text="Servicio" />
-                                    <TableColumn prefWidth="153.0" text="Fecha De Venta" />
-                                    <TableColumn prefWidth="185.0" text="Fecha De Duracion" />
-                                    <TableColumn prefWidth="96.0" text="Precio" />
-                                    <TableColumn prefWidth="81.0" text="Impuesto" />
-                                    <TableColumn prefWidth="81.0" text="Subtotal" />
+                                  <TableColumn fx:id="noFactura" prefWidth="97.0" text="No. Factura" />
+                                    <TableColumn fx:id="servicio" prefWidth="98.0" text="Servicio" />
+                                    <TableColumn fx:id="fechaVenta" prefWidth="153.0" text="Fecha De Venta" />
+                                    <TableColumn fx:id="fechaVencimiento" prefWidth="185.0" text="Fecha De Expiracion" />
+                                    <TableColumn fx:id="precio" prefWidth="96.0" text="Precio" />
+                                    <TableColumn fx:id="impuesto" prefWidth="81.0" text="Impuesto" />
+                                    <TableColumn fx:id="subtotal" prefWidth="81.0" text="SubTotal" />
                                 </columns>
                               </TableView>
                            </children>
                         </AnchorPane>
                   </content>
                 </Tab>
-                <Tab text="Observaciones">
+                <Tab text="Info Personal">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                   </content>
@@ -106,18 +106,18 @@
               </tabs>
             </TabPane>
             <Button layoutX="43.0" layoutY="455.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" text="Actualizar " />
-            <ChoiceBox layoutX="314.0" layoutY="206.0" prefHeight="26.0" prefWidth="171.0" />
-            <Label layoutX="314.0" layoutY="174.0" text="Tipo De Documento" />
-            <TextField layoutX="580.0" layoutY="206.0" prefHeight="26.0" prefWidth="190.0" promptText="No. Factura" />
-            <Label layoutX="540.0" layoutY="211.0" text="No." />
-            <DatePicker layoutX="884.0" layoutY="206.0" promptText="Fecha" />
-            <Label layoutX="833.0" layoutY="211.0" text="Fecha" />
-            <ComboBox layoutX="884.0" layoutY="104.0" prefHeight="26.0" prefWidth="198.0" />
-            <Label layoutX="884.0" layoutY="68.0" prefHeight="16.0" prefWidth="120.0" text="Forma De Pago" />
-            <TextField layoutX="311.0" layoutY="117.0" promptText="Efectivo" />
-            <TextField layoutX="580.0" layoutY="117.0" prefHeight="26.0" prefWidth="190.0" promptText="Cambio" />
-            <ComboBox layoutX="314.0" layoutY="42.0" prefWidth="150.0" />
-            <Label layoutX="322.0" layoutY="26.0" text="Servicio" />
+            <JFXTextField fx:id="noFactura1" disable="true" layoutX="587.0" layoutY="317.0" prefHeight="26.0" prefWidth="190.0" promptText="No. Factura" />
+            <Label layoutX="550.0" layoutY="322.0" text="No." />
+            <JFXComboBox fx:id="formaPago" layoutX="877.0" layoutY="74.0" prefHeight="26.0" prefWidth="198.0" promptText="Seleccione" />
+            <Label layoutX="876.0" layoutY="40.0" prefHeight="16.0" prefWidth="120.0" text="Forma De Pago" />
+            <JFXTextField fx:id="efectivo" layoutX="312.0" layoutY="164.0" onKeyReleased="#calculoFactura" promptText="Efectivo" />
+            <JFXTextField fx:id="cambio" disable="true" editable="false" layoutX="587.0" layoutY="164.0" prefHeight="26.0" prefWidth="155.0" promptText="Cambio" />
+            <JFXComboBox fx:id="servicio1" layoutX="314.0" layoutY="74.0" prefWidth="150.0" promptText="Seleccione" />
+            <Label layoutX="314.0" layoutY="40.0" text="Servicio" />
+            <JFXTextField fx:id="subtotal2" disable="true" layoutX="880.0" layoutY="164.0" promptText="Subtotal" />
+            <JFXTextField fx:id="precio1" disable="true" layoutX="587.0" layoutY="74.0" promptText="Precio" />
+            <JFXDatePicker fx:id="fechaCompra" layoutX="876.0" layoutY="317.0" />
+            <JFXComboBox fx:id="impuesto1" disable="false" editable="false" layoutX="340.0" layoutY="317.0" prefHeight="26.0" prefWidth="155.0" promptText="Impuesto" />
          </children>
     </AnchorPane>
   </children>
