@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-public class Conexion extends  Configuracion implements CamposTabla{
+public class Conexion extends  Configuracion {
    public Connection conexion = null;
    public Statement comando = null;
    public ResultSet registro;

@@ -2,10 +2,6 @@ package sample.Model;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.collections.ObservableList;
-import sample.config.OperacionesSQl;
-
-import java.util.Date;
 
 public class ModelEntrenador {
 

@@ -16,7 +16,7 @@
          <children>
             <ImageView fitHeight="87.0" fitWidth="87.0" layoutX="50.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Descargas/138198-business-collection/png/record.png" />
+                  <Image url="@../icons/history.png" />
                </image>
             </ImageView>
             <Label layoutX="66.0" layoutY="14.0" text="Historial" textFill="WHITE">
@@ -56,7 +56,7 @@
          <children>
             <ImageView fitHeight="79.0" fitWidth="94.0" layoutX="54.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Descargas/settings.png" />
+                  <Image url="@../icons/settings-work-tool.png" />
                </image>
             </ImageView>
             <Label layoutX="34.0" layoutY="14.0" text="Configuracion" textFill="WHITE">
@@ -82,7 +82,21 @@
             <JFXHamburger layoutX="1061.0" prefHeight="62.0" prefWidth="71.0" />
          </children>
       </Pane>
-      <Button fx:id="ventas" alignment="CENTER" layoutX="145.0" layoutY="214.0" mnemonicParsing="false" onAction="#ventas" prefHeight="184.0" prefWidth="186.0" style="-fx-background-color: linear-gradient(to bottom, rgba(255,183,107,1) 0%,rgba(255,167,61,1) 50%,rgba(255,124,0,1) 51%,rgba(255,127,4,1) 100%)" text="Ventas" textFill="WHITE" />
-      <Button fx:id="clientes" alignment="CENTER" layoutX="784.0" layoutY="473.0" mnemonicParsing="false" onAction="#clientes" prefHeight="184.0" prefWidth="186.0" style="-fx-background-color: linear-gradient(to bottom, rgba(255,183,107,1) 0%,rgba(255,167,61,1) 50%,rgba(255,124,0,1) 51%,rgba(255,127,4,1) 100%)" text="Clientes" textFill="WHITE" />
+      <Button fx:id="ventas" alignment="CENTER" layoutX="145.0" layoutY="214.0" mnemonicParsing="false" onAction="#ventas" prefHeight="184.0" prefWidth="186.0" style="-fx-background-color: linear-gradient(to bottom, rgba(255,183,107,1) 0%,rgba(255,167,61,1) 50%,rgba(255,124,0,1) 51%,rgba(255,127,4,1) 100%)" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="131.0" fitWidth="157.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/cash-register%20(2).png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="clientes" alignment="CENTER" layoutX="784.0" layoutY="473.0" mnemonicParsing="false" onAction="#clientes" prefHeight="184.0" prefWidth="186.0" style="-fx-background-color: linear-gradient(to bottom, rgba(255,183,107,1) 0%,rgba(255,167,61,1) 50%,rgba(255,124,0,1) 51%,rgba(255,127,4,1) 100%)" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="91.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/man.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
    </children>
 </AnchorPane>

@@ -1,26 +1,20 @@
 package sample.Model;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableView;
 
 import sample.Main;
 
 
-import java.beans.EventHandler;
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
 public class ModelCliente {
+
     private StringProperty nombre;
     private StringProperty apellido;
     private StringProperty membresia;
@@ -29,7 +23,33 @@ public class ModelCliente {
     private StringProperty telefono;
     private StringProperty correo;
     private StringProperty comentario;
+    private DoubleProperty altura;
+    private DoubleProperty peso;
+    private DoubleProperty fuerza;
 
+    public double getAltura() {
+        return altura.get();
+    }
+
+    public DoubleProperty alturaProperty() {
+        return altura;
+    }
+
+    public double getPeso() {
+        return peso.get();
+    }
+
+    public DoubleProperty pesoProperty() {
+        return peso;
+    }
+
+    public double getFuerza() {
+        return fuerza.get();
+    }
+
+    public DoubleProperty fuerzaProperty() {
+        return fuerza;
+    }
 
     public void setNombre(String nombre) {
         this.nombre.set(nombre);
@@ -47,47 +67,73 @@ public class ModelCliente {
         this.id.set(id);
     }
 
+    public String getTelefono() {
+        return telefono.get();
+    }
 
-    public ModelCliente(String nombre, String apellido, String membresia, Date fecha, String id) {
+    public StringProperty telefonoProperty() {
+        return telefono;
+    }
+
+    public String getCorreo() {
+        return correo.get();
+    }
+
+    public StringProperty correoProperty() {
+        return correo;
+    }
+
+    public String getComentario() {
+        return comentario.get();
+    }
+
+    public StringProperty comentarioProperty() {
+        return comentario;
+    }
+
+
+    public ModelCliente(String nombre, String apellido, String membresia, Date fecha, String id, String telefono, String correo, Double altura, Double fuerza, Double peso) {
         this.nombre = new SimpleStringProperty(nombre);
         this.apellido = new SimpleStringProperty(apellido);
         this.membresia = new SimpleStringProperty(membresia);
         this.id = new SimpleStringProperty(id);
         this.fecha = fecha;
-
+        this.telefono=new SimpleStringProperty(telefono);
+        this.correo=new SimpleStringProperty(correo);
+        this.altura=new SimpleDoubleProperty(altura);
+        this.fuerza=new SimpleDoubleProperty(fuerza);
+        this.peso=new SimpleDoubleProperty(peso);
 
     }
 
-    public static void buscar(String parametro, ObservableList<ModelCliente> list, TableView tblCliente) {
+
+    public static void buscar(String parametro, ObservableList<ModelCliente> list) {
 
         /// hacer validacion con clase Validator
         try {
-            ResultSet datosCliente = Main.comando.executeQuery("SELECT  Cliente.nombre,telefono,idCliente,apellido,edad,telefono,fechaNacimiento,Servicio.nombre as nomMem,descripcion,duracion " +
-                    "FROM Cliente INNER  JOIN Servicio" +
-                    " ON Cliente.Membresia_idMembresia = Servicio.idMembresia WHERE  Cliente.nombre LIKE '%" + parametro + "%' OR  Cliente.apellido LIKE '%" + parametro + "%' OR Cliente.idCliente LIKE '%" + parametro + "%'");
+            ResultSet datosCliente = Main.comando.executeQuery("SELECT  Cliente.nombre,telefono,idCliente,apellido,edad,telefono,fechaNacimiento,correo,peso,fuerza,altura,Servicio.nombre as nomMem,descripcion,duracion " +
+                    "FROM Cliente INNER  JOIN Factura On Cliente.idCliente = Factura.Cliente_idCliente INNER  JOIN Servicio" +
+                    " ON Factura.idServicio = Servicio.idMembresia WHERE  Cliente.nombre LIKE '%" + parametro + "%' OR  Cliente.apellido LIKE '%" + parametro + "%' OR Cliente.idCliente LIKE '%" + parametro + "%'");
 
             while (datosCliente.next()) {
-                ModelCliente cliente = new ModelCliente(
+                list.add( new ModelCliente(
                         datosCliente.getString("nombre"),
                         datosCliente.getString("apellido"),
                         datosCliente.getString("nomMem"),
                         datosCliente.getDate("fechaNacimiento"),
-                        datosCliente.getString("idCliente")
+                        datosCliente.getString("idCliente"),
+                        datosCliente.getString("telefono"),
+                        datosCliente.getString("correo"),
+                        datosCliente.getDouble("peso"),
+                        datosCliente.getDouble("fuerza"),
+                        datosCliente.getDouble("altura")
 
-                );
-
-                list.add(cliente);
-                cliente = null;
-                try {
-                    cliente.finalize();
-                } catch (Throwable throwable) {
-                    throwable.printStackTrace();
-                }
-
+                ));
 
             }
 
             datosCliente.close();
+            datosCliente=null;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -99,46 +145,48 @@ public class ModelCliente {
         try {
             ResultSet datosCliente = Main.comando.executeQuery(
                     "SELECT * FROM  Cliente LEFT JOIN Enfermedades  ON Cliente.Enfermedades_idEnfermedades=Enfermedades.idEnfermedades " +
-                            "INNER  JOIN Servicio on Cliente.Membresia_idMembresia = Servicio.idMembresia " +
+                            " INNER  JOIN Factura on Cliente.idCliente = Factura.Cliente_idCliente INNER  JOIN Servicio on Factura.idServicio = Servicio.idMembresia " +
                             "WHERE idCliente ='" + id + "'");
             return datosCliente;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 
 
-    public static void listaEnfermedades(ObservableList listaEnfermedades) throws SQLException {
 
-        ResultSet datosCliente = Main.comando.executeQuery("SELECT nombre,idEnfermedades FROM Enfermedades");
+    public static void listaMembresias(ObservableList listaMembresia) throws SQLException {
+        ResultSet datosCliente = Main.comando.executeQuery("SELECT nombre,idMembresia FROM Servicio");
         while (datosCliente.next()) {
-            listaEnfermedades.add(datosCliente.getString("nombre"));
+            listaMembresia.add(datosCliente.getString("nombre"));
         }
         datosCliente.close();
+
     }
 
-    public static void mostrarTodos(ObservableList<ModelCliente> listaclientes, TableView tblCliente) throws SQLException {
-        ResultSet datosCliente = Main.comando.executeQuery("SELECT  Cliente.nombre,telefono,idCliente,apellido,edad,telefono,fechaNacimiento,Servicio.nombre AS nomMem,descripcion,duracion " +
-                "FROM Cliente INNER JOIN Servicio" +
-                " ON Cliente.Membresia_idMembresia = Servicio.idMembresia");
+    public static void mostrarTodos(ObservableList<ModelCliente> listaclientes) throws SQLException {
+        ResultSet datosCliente = Main.comando.executeQuery("SELECT  Cliente.nombre,telefono,idCliente,apellido,edad,correo,telefono,fechaNacimiento,peso,altura,fuerza,Servicio.nombre AS nomMem,descripcion,duracion " +
+                "FROM Cliente INNER JOIN Factura on Cliente.idCliente = Factura.Cliente_idCliente INNER JOIN Servicio" +
+                " ON Factura.idServicio = Servicio.idMembresia GROUP BY Cliente.idCliente");
 
 
         while (datosCliente.next()) {
-            ModelCliente cliente = new ModelCliente(datosCliente.getString("nombre"),
+
+            listaclientes.add(new ModelCliente(
+                    datosCliente.getString("nombre"),
                     datosCliente.getString("apellido"),
                     datosCliente.getString("nomMem"),
                     datosCliente.getDate("fechaNacimiento"),
-                    datosCliente.getString("idCliente")
-            );
+                    datosCliente.getString("idCliente"),
+                    datosCliente.getString("telefono"),
+                    datosCliente.getString("correo"),
+                    datosCliente.getDouble("peso"),
+                    datosCliente.getDouble("fuerza"),
+                    datosCliente.getDouble("altura")
+            ));
 
-            listaclientes.add(cliente);
-
-            try {
-                cliente.finalize();
-            } catch (Throwable throwable) {
-                throwable.printStackTrace();
-            }
         }
         datosCliente.close();
 
@@ -179,4 +227,5 @@ public class ModelCliente {
 
 
 }
+
 

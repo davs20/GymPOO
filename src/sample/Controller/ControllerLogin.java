@@ -10,8 +10,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.Model.ModelUsuario;
@@ -30,7 +31,7 @@ public class ControllerLogin implements  Initializable {
     public JFXPasswordField contrasen;
     public Button entrar;
     public Label error;
-
+    public AnchorPane panel;
     private void nuevaScena(String scena, ActionEvent actionEvent) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource(urlbase.concat(scena)));
         Scene nueva = new Scene(fxml);
@@ -106,6 +107,11 @@ public class ControllerLogin implements  Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        BackgroundImage myBI= new BackgroundImage(new Image("/sample/Controller/hello-world.png",650,400,false,true),
+                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+
+        panel.setBackground(new Background(myBI));
 
     }
 }

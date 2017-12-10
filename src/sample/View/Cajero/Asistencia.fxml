@@ -56,7 +56,7 @@
          <children>
             <TextField fx:id="buscar" layoutX="66.0" layoutY="38.0" prefHeight="26.0" prefWidth="310.0" promptText="Buscar" />
             <ImageView fx:id="foto" fitHeight="106.0" fitWidth="130.0" layoutX="312.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" />
-            <Button layoutX="396.0" layoutY="34.0" mnemonicParsing="false" onAction="#buscarCliente" prefHeight="35.0" prefWidth="92.0" text="Asistencia" />
+            <Button layoutX="396.0" layoutY="34.0" mnemonicParsing="false" onAction="#buscarCliente" prefHeight="35.0" prefWidth="92.0" text="Buscar" />
             <TextField fx:id="nombreC" layoutX="219.0" layoutY="211.0" prefHeight="26.0" prefWidth="381.0" />
             <Label layoutX="83.0" layoutY="216.0" text="Nombre Completo" />
             <Label layoutX="83.0" layoutY="285.0" prefHeight="16.0" prefWidth="119.0" text="Identidad" />
@@ -66,6 +66,7 @@
             <TextField fx:id="diasRestantes" layoutX="222.0" layoutY="418.0" prefHeight="26.0" prefWidth="381.0" />
             <Label layoutX="83.0" layoutY="423.0" text="Dias Restantes" />
             <Button layoutX="550.0" layoutY="34.0" mnemonicParsing="false" onAction="#menu" prefHeight="35.0" prefWidth="84.0" text="Menu" />
+            <Button layoutX="365.0" layoutY="482.0" mnemonicParsing="false" text="Confirmar" />
          </children>
     </AnchorPane>
   </children>

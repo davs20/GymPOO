@@ -31,7 +31,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class ControllerClienteFoto implements Initializable {
+public class ControllerClienteFoto  implements Initializable  {
 
 
     @FXML
@@ -60,6 +60,7 @@ public class ControllerClienteFoto implements Initializable {
         private String webCamName;
         private int webCamIndex;
 
+
         public String getWebCamName() {
             return webCamName;
         }
@@ -81,13 +82,21 @@ public class ControllerClienteFoto implements Initializable {
             return webCamName;
         }
     }
-
+    private  String direccion;
     private BufferedImage grabbedImage;
     private Webcam selWebCam = null;
     private boolean stopCamera = false;
     private ObjectProperty<Image> imageProperty = new SimpleObjectProperty<Image>();
 
     private String cameraListPromptText = "Elija una Camara";
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -121,6 +130,11 @@ public class ControllerClienteFoto implements Initializable {
                 setImageViewSize();
             }
         });
+
+        stopCamera = false;
+        startWebCamStream();
+        btnStartCamera.setDisable(true);
+        btnStopCamera.setDisable(false);
 
     }
 
@@ -223,10 +237,19 @@ public class ControllerClienteFoto implements Initializable {
     }
 
     public void disposeCamera(ActionEvent event) {
+
+        try {
+
+            ImageIO.write(selWebCam.getImage(), "PNG", new File(this.direccion+".png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         stopCamera = true;
         closeCamera();
         btnStopCamera.setDisable(true);
         btnStartCamera.setDisable(true);
+
     }
 
 

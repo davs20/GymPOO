@@ -10,6 +10,7 @@ import java.util.Date;
 
 public class ModelImpuesto {
 
+    private Double valorReal;
     private Double valorImpuesto;
     private Integer idImpuesto;
     private Date fecha;

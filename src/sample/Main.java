@@ -34,8 +34,9 @@ public class Main extends Application {
         abrirConexion();
         Parent root = FXMLLoader.load(getClass().getResource("../sample/View/login.fxml"));
         primaryStage.setTitle("Login");
-        primaryStage.setScene(new Scene(root, 400, 600));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
         primaryStage.setResizable(false);
 
 

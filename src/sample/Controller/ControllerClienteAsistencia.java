@@ -21,9 +21,9 @@ import static sample.Controller.Controller.urlbase;
 
 public class ControllerClienteAsistencia {
     public TextField buscar;
-    public  TextField nombreC;
-    public TextField  tel;
-    public  TextField id;
+    public TextField nombreC;
+    public TextField tel;
+    public TextField id;
     public ImageView foto;
 
     private void nuevaScena(String scena, ActionEvent actionEvent) throws IOException {
@@ -36,22 +36,21 @@ public class ControllerClienteAsistencia {
     }
 
 
-    public void menu(ActionEvent actionEvent){
+    public void menu(ActionEvent actionEvent) {
         try {
-            nuevaScena("../View/Cajero/HomeCajero.fxml",actionEvent);
+            nuevaScena("../View/Cajero/HomeCajero.fxml", actionEvent);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void buscarCliente(ActionEvent actionEvent){
-        ResultSet cliente= ModelCliente.mostrarCliente(buscar.getText());
+    public void buscarCliente(ActionEvent actionEvent) {
+        ResultSet cliente = ModelCliente.mostrarCliente(buscar.getText());
         try {
             cliente.next();
-            nombreC.setText(cliente.getString("nombre") + " "+ cliente.getString("apellido"));
+            nombreC.setText(cliente.getString("nombre") + " " + cliente.getString("apellido"));
             tel.setText(cliente.getString("telefono"));
             id.setText(cliente.getString("idCliente"));
-          //  foto.imageProperty().set(new Image(cliente.getString("foto")));
             try {
                 foto.setImage(new Image(new FileInputStream(cliente.getString("foto"))));
             } catch (FileNotFoundException e) {

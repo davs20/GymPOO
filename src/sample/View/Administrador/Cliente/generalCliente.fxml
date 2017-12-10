@@ -58,7 +58,7 @@
       <children>
             <TableView fx:id="tblCliente" layoutX="160.0" layoutY="85.0" prefHeight="295.0" prefWidth="742.0">
               <columns>
-                <TableColumn fx:id="nombre" onEditCommit="#actualizarNombre" prefWidth="140.0" text="Nombre Completo" />
+                <TableColumn fx:id="nombre"  prefWidth="140.0" text="Nombre Completo" />
                 <TableColumn fx:id="id" prefWidth="128.0" text="Identidad" />
                   <TableColumn fx:id="memb" prefWidth="128.0" text="Membresia" />
                   <TableColumn fx:id="fechaIngreso" prefWidth="128.0" text="Fecha Ingreso" />
@@ -90,6 +90,24 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="292.0" layoutY="398.0" mnemonicParsing="false" onAction="#verCliente" prefHeight="70.0" prefWidth="151.0" ripplerFill="#b98989" style="-fx-background-color: chocolate; -fx-background-radius: 17%; " text="Ver" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../icons/view.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="desabilitar" buttonType="RAISED" layoutX="609.0" layoutY="398.0" mnemonicParsing="false" onAction="#desabilitarCliente" prefHeight="70.0" prefWidth="139.0" ripplerFill="#b98989" style="-fx-background-color: #d20004; -fx-background-radius: 17%; " text="Desabilitar" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../icons/x-button.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
       </children>
     </AnchorPane>
   </children>
