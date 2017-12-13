@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="568.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.View.Mantenimiento.Seguimiento.Seguimiento">
+   <children>
+      <SplitPane dividerPositions="0.29797979797979796" prefHeight="568.0" prefWidth="634.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <JFXTextField layoutX="8.0" layoutY="22.0" promptText="Id Entrenador" />
+                  <JFXTextField layoutX="8.0" layoutY="66.0" promptText="Peso" />
+                  <JFXTextField layoutX="8.0" layoutY="116.0" promptText="Porcetaje de Grasa" />
+                  <JFXTextField layoutX="8.0" layoutY="170.0" promptText="Altura" />
+                  <DatePicker layoutX="55.0" layoutY="242.0" prefHeight="25.0" prefWidth="75.0" promptText="Fecha" />
+                  <JFXButton buttonType="RAISED" layoutX="47.0" layoutY="323.0" prefHeight="28.0" prefWidth="92.0" style="-fx-background-color: #d2d2d2;" text="Guardar">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@icons8_Save_48px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="47.0" layoutY="375.0" prefHeight="28.0" prefWidth="92.0" style="-fx-background-color: #d2d2d2;" text="Nuevo">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@icons8_Add_User_Male_48px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="47.0" layoutY="422.0" prefHeight="28.0" prefWidth="92.0" style="-fx-background-color: #d2d2d2;" text="Modificar">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@icons8_Refresh_40px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="47.0" layoutY="472.0" prefHeight="28.0" prefWidth="92.0" style="-fx-background-color: #d2d2d2;" text="Eliminar">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@icons8_Trash_Can_50px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView layoutY="168.0" prefHeight="345.0" prefWidth="441.0">
+                    <columns>
+                      <TableColumn prefWidth="88.0" text="ID Entrenador" />
+                      <TableColumn prefWidth="65.0" text="Id Cliente" />
+                        <TableColumn prefWidth="50.0" text="Peso" />
+                        <TableColumn prefWidth="86.0" text="\% Grasa" />
+                        <TableColumn prefWidth="66.0" text="Altura" />
+                        <TableColumn prefWidth="85.0" text="Fecha" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="166.0" layoutY="14.0" text="Seguimiento">
+                     <font>
+                        <Font name="Arial Narrow" size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField alignment="CENTER" layoutY="114.0" prefHeight="25.0" prefWidth="205.0" promptText="Buscar" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
