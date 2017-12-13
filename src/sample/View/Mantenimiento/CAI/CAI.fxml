@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="563.0" prefWidth="629.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.View.Mantenimiento.CAI.CAI">
+   <children>
+      <SplitPane dividerPositions="0.29797979797979796" prefHeight="563.0" prefWidth="629.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <JFXButton buttonType="RAISED" layoutX="6.0" layoutY="370.0" prefHeight="35.0" prefWidth="83.0" style="-fx-background-color: #d2d2d2;" text="Agregar">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@icons8_Add_User_Male_48px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="100.0" layoutY="370.0" prefHeight="35.0" prefWidth="83.0" style="-fx-background-color: #d2d2d2;" text="Modificar">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@icons8_Refresh_40px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXTextField layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="135.0" promptText="Numero CAI" />
+                  <DatePicker layoutX="6.0" layoutY="73.0" promptText="Fecha  limite" />
+                  <DatePicker layoutX="6.0" layoutY="120.0" promptText="Feha de Emision" />
+                  <JFXTextField layoutX="6.0" layoutY="163.0" promptText="Numero Sucursal" />
+                  <JFXTextField layoutX="6.0" layoutY="208.0" promptText="Direccion de la Sucursal" />
+                  <JFXTextField layoutX="6.0" layoutY="245.0" promptText="Punto de Emision" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="561.0" prefWidth="427.0">
+               <children>
+                  <TableView layoutX="5.0" layoutY="131.0" prefHeight="300.0" prefWidth="427.0">
+                    <columns>
+                      <TableColumn prefWidth="42.0" text="N. CAI" />
+                      <TableColumn prefWidth="92.0" text="Fecha de limite" />
+                        <TableColumn prefWidth="90.0" text="Feha de Emision" />
+                        <TableColumn prefWidth="63.0" text="IdSucursal" />
+                        <TableColumn prefWidth="66.0" text="Direccion" />
+                        <TableColumn prefWidth="90.0" text="Punto Emision" />
+                    </columns>
+                  </TableView>
+                  <JFXTextField layoutX="5.0" layoutY="103.0" promptText="Ingrese el  CAI" />
+                  <Label layoutX="141.0" layoutY="14.0" text="Punto de Emision">
+                     <font>
+                        <Font name="Arial Narrow" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
