@@ -11,6 +11,7 @@ import sample.Main;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ModelCliente {
@@ -26,6 +27,19 @@ public class ModelCliente {
     private DoubleProperty altura;
     private DoubleProperty peso;
     private DoubleProperty fuerza;
+    private StringProperty estado;
+
+    public String getEstado() {
+        return estado.get();
+    }
+
+    public StringProperty estadoProperty() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado.set(estado);
+    }
 
     public double getAltura() {
         return altura.get();
@@ -92,7 +106,8 @@ public class ModelCliente {
     }
 
 
-    public ModelCliente(String nombre, String apellido, String membresia, Date fecha, String id, String telefono, String correo, Double altura, Double fuerza, Double peso) {
+    public ModelCliente(String nombre, String apellido, String membresia, Date fecha, String id, String telefono, String correo, Double altura, Double fuerza, Double peso,String estado) {
+
         this.nombre = new SimpleStringProperty(nombre);
         this.apellido = new SimpleStringProperty(apellido);
         this.membresia = new SimpleStringProperty(membresia);
@@ -103,17 +118,50 @@ public class ModelCliente {
         this.altura=new SimpleDoubleProperty(altura);
         this.fuerza=new SimpleDoubleProperty(fuerza);
         this.peso=new SimpleDoubleProperty(peso);
-
+        this.estado=new SimpleStringProperty(estado);
     }
 
 
+    public static  void updateCliente(String id,String telefono,String correo,String comentarios,Date fecha,String padecimiento,String apellido,String foto,String altura,String nombre,String membresias,int edad,String peso,String fuerza) throws SQLException {
+
+     Main.comando.execute("UPDATE  Cliente SET telefono='"+telefono+"',correo='"+correo+"',fechaNacimiento='"+fecha+"',Enfermedades_idEnfermedades='"+padecimiento+"',nombre='"+nombre+"',Membresia_idMembresia='"+membresias+"',edad='"+edad+"',fuerza='"+fuerza+"',foto='"+foto+"'  WHERE idCliente='"+id+"'");
+
+    }
+
+    public void insertarCliente(ObservableList<ModelCliente> listaCliente){
+
+
+    }
+
+    public static  void insertarFoto(String id,String telefono,String correo,String comentarios,Date fecha,String padecimiento,String apellido,String foto,String altura,String nombre,String membresias,int edad,String peso,String fuerza) throws SQLException {
+        Main.comando.execute("INSERT INTO `Cliente` (`idCliente`, `fechaNacimiento`, `nombre`, `apellido`, " +
+                "`telefono`, `Membresia_idMembresia`, `Clientecol`, `edad`, `Enfermedades_idEnfermedades`, `peso`, " +
+                "`fuerza`, `masaMuscular`, `correo`, `direccion`, `altura`, `foto`) VALUES ('" + id + "'," +
+                " '" + fecha + "', '" + nombre + "', '" + apellido + "', '"
+                + telefono + "'," + " '"+membresias+"', NULL, '"+edad+"', '"+padecimiento+"', '" + peso + "', '" + fuerza
+                + "',NULL, '" + correo + "'" +
+                ", '"+comentarios+"', '" + altura + "'," + " '"+foto+"')");
+    }
+
+    public static  void updateFoto(String foto,String id) throws SQLException {
+        Main.comando.execute("UPDATE  Cliente SET foto='"+foto+"' WHERE Cliente.idCliente='"+id+"'");
+    }
+
+
+    public static  void desabilitar(String id) throws SQLException {
+        Main.comando.execute("UPDATE Cliente set estado=0 WHERE idCliente='"+id+"'");
+
+    }
+    public static void habilitar(String id ) throws SQLException {
+        Main.comando.execute("UPDATE  Cliente SET  estado=1 WHERE idCliente='"+id+"'");
+    }
     public static void buscar(String parametro, ObservableList<ModelCliente> list) {
 
         /// hacer validacion con clase Validator
         try {
-            ResultSet datosCliente = Main.comando.executeQuery("SELECT  Cliente.nombre,telefono,idCliente,apellido,edad,telefono,fechaNacimiento,correo,peso,fuerza,altura,Servicio.nombre as nomMem,descripcion,duracion " +
-                    "FROM Cliente INNER  JOIN Factura On Cliente.idCliente = Factura.Cliente_idCliente INNER  JOIN Servicio" +
-                    " ON Factura.idServicio = Servicio.idMembresia WHERE  Cliente.nombre LIKE '%" + parametro + "%' OR  Cliente.apellido LIKE '%" + parametro + "%' OR Cliente.idCliente LIKE '%" + parametro + "%'");
+            ResultSet datosCliente = Main.comando.executeQuery("SELECT  Cliente.nombre,IF(estado=1,'Habilitado','Desabilitado') as estado,telefono,idCliente,apellido,edad,telefono,fechaNacimiento,correo,peso,fuerza,altura,Servicio.nombre as nomMem,descripcion,duracion " +
+                    "FROM Cliente LEFT  JOIN Factura On Cliente.idCliente = Factura.Cliente_idCliente INNER  JOIN Servicio" +
+                    " ON Factura.idServicio = Servicio.idMembresia WHERE  Cliente.nombre LIKE '%" + parametro + "%' OR  Cliente.apellido LIKE '%" + parametro + "%' OR Cliente.idCliente LIKE '%" + parametro + "%' GROUP BY Cliente.idCliente");
 
             while (datosCliente.next()) {
                 list.add( new ModelCliente(
@@ -126,8 +174,8 @@ public class ModelCliente {
                         datosCliente.getString("correo"),
                         datosCliente.getDouble("peso"),
                         datosCliente.getDouble("fuerza"),
-                        datosCliente.getDouble("altura")
-
+                        datosCliente.getDouble("altura"),
+                        datosCliente.getString("estado")
                 ));
 
             }
@@ -140,13 +188,26 @@ public class ModelCliente {
         }
 
     }
+    public static ResultSet mostrarClienteAsistencia(String id) {
+        try {
+            ResultSet datosCliente = Main.comando.executeQuery(
+                    "SELECT *,DATEDIFF(CURRENT_TIMESTAMP,Factura.fecha) as diasRestantes  FROM  Cliente LEFT JOIN Enfermedades  ON Cliente.Enfermedades_idEnfermedades=Enfermedades.idEnfermedades " +
+                            "  INNER JOIN Factura ON Cliente.idCliente = Factura.Cliente_idCliente INNER  JOIN Servicio on Factura.idServicio = Servicio.idMembresia " +
+                            "WHERE idCliente ='" + id + "'   GROUP BY  Cliente.idCliente ORDER BY Factura.fecha DESC LIMIT 1" );
+            return datosCliente;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 
     public static ResultSet mostrarCliente(String id) {
         try {
             ResultSet datosCliente = Main.comando.executeQuery(
-                    "SELECT * FROM  Cliente LEFT JOIN Enfermedades  ON Cliente.Enfermedades_idEnfermedades=Enfermedades.idEnfermedades " +
-                            " INNER  JOIN Factura on Cliente.idCliente = Factura.Cliente_idCliente INNER  JOIN Servicio on Factura.idServicio = Servicio.idMembresia " +
-                            "WHERE idCliente ='" + id + "'");
+                    "SELECT *  FROM  Cliente LEFT JOIN Enfermedades  ON Cliente.Enfermedades_idEnfermedades=Enfermedades.idEnfermedades " +
+                            "  INNER JOIN Factura ON Cliente.idCliente = Factura.Cliente_idCliente INNER  JOIN Servicio on Factura.idServicio = Servicio.idMembresia " +
+                            "WHERE idCliente ='" + id + "'   GROUP BY  Cliente.idCliente ORDER BY Factura.fecha DESC LIMIT 1" );
             return datosCliente;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -167,8 +228,8 @@ public class ModelCliente {
     }
 
     public static void mostrarTodos(ObservableList<ModelCliente> listaclientes) throws SQLException {
-        ResultSet datosCliente = Main.comando.executeQuery("SELECT  Cliente.nombre,telefono,idCliente,apellido,edad,correo,telefono,fechaNacimiento,peso,altura,fuerza,Servicio.nombre AS nomMem,descripcion,duracion " +
-                "FROM Cliente INNER JOIN Factura on Cliente.idCliente = Factura.Cliente_idCliente INNER JOIN Servicio" +
+        ResultSet datosCliente = Main.comando.executeQuery("SELECT  Cliente.nombre,IF(Cliente.estado=1,'Habilitado','Desabilitado') as estado2,telefono,idCliente,apellido,edad,correo,telefono,fechaNacimiento,peso,altura,fuerza,Servicio.nombre AS nomMem,descripcion,duracion " +
+                "FROM Cliente LEFT JOIN Factura on Cliente.idCliente = Factura.Cliente_idCliente LEFT JOIN Servicio" +
                 " ON Factura.idServicio = Servicio.idMembresia GROUP BY Cliente.idCliente");
 
 
@@ -184,7 +245,8 @@ public class ModelCliente {
                     datosCliente.getString("correo"),
                     datosCliente.getDouble("peso"),
                     datosCliente.getDouble("fuerza"),
-                    datosCliente.getDouble("altura")
+                    datosCliente.getDouble("altura"),
+                    datosCliente.getString("estado2")
             ));
 
         }
@@ -226,6 +288,10 @@ public class ModelCliente {
     }
 
 
+    public static void updateCliente(String id, String telefono, String correo, String idPadecimiento, LocalDate fecha, String foto2, String text4, String idMembresia, String nombre,String apellido, String fuerza,String edad) throws SQLException {
+        Main.comando.execute("UPDATE  Cliente SET telefono='"+telefono+"',correo='"+correo+"',fechaNacimiento='"+fecha+"',Enfermedades_idEnfermedades='"+idPadecimiento+"',nombre='"+nombre+"',apellido='"+apellido+"',Membresia_idMembresia='"+idMembresia+"',edad='"+edad+"',fuerza='"+fuerza+"',foto='"+foto2+"',altura='"+text4+"'  WHERE idCliente='"+id+"'");
+
+    }
 }
 
 

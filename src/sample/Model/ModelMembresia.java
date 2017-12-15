@@ -14,14 +14,24 @@ public class ModelMembresia {
 
     private String nombre;
     private String descripcion;
-    private Integer precio;
+    private Double precio;
     private Integer id;
+    private Integer duracion;
 
-    public ModelMembresia(String nombre, String descripcion, Integer precio, Integer id) {
+    public ModelMembresia(String nombre, String descripcion, Double precio, Integer id,Integer duracion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.id = id;
+        this.duracion=duracion;
+    }
+
+    public Integer getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(Integer duracion) {
+        this.duracion = duracion;
     }
 
     public static void listaMembresias(ObservableList listaMembresia) throws SQLException {
@@ -30,8 +40,10 @@ public class ModelMembresia {
             listaMembresia.add(new ModelMembresia(
                     datosCliente.getString("nombre"),
                     datosCliente.getString("descripcion"),
-                    datosCliente.getInt("precio"),
-                    datosCliente.getInt("idMembresia")
+                    datosCliente.getDouble("precio"),
+                    datosCliente.getInt("idMembresia"),
+                    datosCliente.getInt("duracion")
+
             ));
         }
         datosCliente.close();
@@ -44,17 +56,57 @@ public class ModelMembresia {
             listaServicio.add(new ModelMembresia(
                     datoServicio.getString("nombre"),
                     datoServicio.getString("descripcion"),
-                    datoServicio.getInt("precio"),
-                    datoServicio.getInt("idMembresia")
+                    datoServicio.getDouble("precio"),
+                    datoServicio.getInt("idMembresia"),
+                    datoServicio.getInt("duracion")
             ));
         }
         datoServicio.close();
 
     }
+    public Boolean guardarMembresia() throws SQLException {
+
+        return Main.comando.execute("INSERT INTO `Servicio`(`nombre`, `descripcion`, `duracion`, `precio`, `idImpuesto`,`estado`) " +
+                 "VALUES ('"+getNombre()+"','"+getDescripcion()+"','"+getDuracion()+"','"+getPrecio()+"',(SELECT idImpuesto FROM Impuesto ORDER BY idImpuesto DESC Limit 1),1)");
+
+
+    }
+
+    public static int obtenerId( int id) {
+
+
+        try {
+            ResultSet resultado = Main.comando.executeQuery("SELECT `idMembresia` FROM `Servicio` ORDER BY `idMembresia` DESC Limit 1");
+            if (resultado.next()){
+                id = resultado.getInt("idMembresia");}
+
+            return  id;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }return 0;
+
+    }
+
 
     public static ResultSet mostrarMembresia(String id) throws SQLException {
-        ResultSet datoServicio = Main.comando.executeQuery("SELECT * FROM Servicio WHERE idMembresia='" + id + "'");
+        ResultSet datoServicio = Main.comando.executeQuery("SELECT * FROM Servicio Inner Join Impuesto on Impuesto.idImpuesto=Servicio.idImpuesto WHERE idMembresia='" + id + "'");
         return datoServicio;
+    }
+    public int actualizarRegistros(){
+        return 0;
+
+    }
+    public int eliminarRegistro(String id){
+        try {
+
+            Main.comando.execute("UPDATE Servicio " +
+                            "SET estado = 0 " +
+                            "WHERE idMembresia = '"+id+"'");
+            return 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     public String getNombre() {
@@ -66,5 +118,19 @@ public class ModelMembresia {
         return "" + id;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
 
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
 }

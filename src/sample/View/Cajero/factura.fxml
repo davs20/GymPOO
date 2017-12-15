@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -61,8 +60,8 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefWidth="667.0" VBox.vgrow="ALWAYS">
          <children>
-            <JFXButton fx:id="nuevoCliente" layoutX="179.0" layoutY="117.0" mnemonicParsing="false" onAction="#nuevoCliente" prefHeight="26.0" prefWidth="110.0" text="Nuevo Cliente" />
-            <JFXTextField fx:id="buscar" layoutX="23.0" layoutY="117.0" onKeyReleased="#buscar" prefHeight="26.0" prefWidth="149.0" promptText="Id Cliente" text="Cliente" />
+            <JFXButton fx:id="nuevoCliente" layoutX="179.0" layoutY="117.0" mnemonicParsing="false" onAction="#insertarCliente" prefHeight="26.0" prefWidth="110.0" text="Nuevo Cliente" />
+            <JFXTextField fx:id="buscar" layoutX="23.0" layoutY="117.0" onKeyReleased="#buscar" prefHeight="26.0" prefWidth="149.0" promptText="Buscar" />
             <Label layoutX="78.0" layoutY="26.0" text="Seleccionar Al Cliente" />
             <Separator layoutX="289.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="586.0" prefWidth="21.0" />
             <TableView fx:id="tblCliente" layoutX="23.0" layoutY="177.0" prefHeight="200.0" prefWidth="251.0">
@@ -98,26 +97,23 @@
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                   </content>
                 </Tab>
-                  <Tab text="Untitled Tab 2">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                     </content>
-                  </Tab>
               </tabs>
             </TabPane>
-            <Button layoutX="43.0" layoutY="455.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" text="Actualizar " />
-            <JFXTextField fx:id="noFactura1" disable="true" layoutX="587.0" layoutY="317.0" prefHeight="26.0" prefWidth="190.0" promptText="No. Factura" />
-            <Label layoutX="550.0" layoutY="322.0" text="No." />
-            <JFXComboBox fx:id="formaPago" layoutX="877.0" layoutY="74.0" prefHeight="26.0" prefWidth="198.0" promptText="Seleccione" />
-            <Label layoutX="876.0" layoutY="40.0" prefHeight="16.0" prefWidth="120.0" text="Forma De Pago" />
-            <JFXTextField fx:id="efectivo" layoutX="312.0" layoutY="164.0" onKeyReleased="#calculoFactura" promptText="Efectivo" />
-            <JFXTextField fx:id="cambio" disable="true" editable="false" layoutX="587.0" layoutY="164.0" prefHeight="26.0" prefWidth="155.0" promptText="Cambio" />
+            <Button fx:id="actualizarCliente" layoutX="43.0" layoutY="455.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" text="Actualizar " />
+            <JFXTextField fx:id="noFactura1" disable="true" layoutX="366.0" layoutY="317.0" prefHeight="26.0" prefWidth="190.0" promptText="No. Factura" />
+            <Label layoutX="329.0" layoutY="322.0" text="No." />
+            <JFXTextField fx:id="efectivo" layoutX="340.0" layoutY="212.0" onKeyReleased="#calculoFactura" promptText="Efectivo" />
+            <JFXTextField fx:id="cambio" disable="true" editable="false" layoutX="580.0" layoutY="212.0" prefHeight="26.0" prefWidth="155.0" promptText="Cambio" />
             <JFXComboBox fx:id="servicio1" layoutX="314.0" layoutY="74.0" prefWidth="150.0" promptText="Seleccione" />
             <Label layoutX="314.0" layoutY="40.0" text="Servicio" />
-            <JFXTextField fx:id="subtotal2" disable="true" layoutX="880.0" layoutY="164.0" promptText="Subtotal" />
-            <JFXTextField fx:id="precio1" disable="true" layoutX="587.0" layoutY="74.0" promptText="Precio" />
-            <JFXDatePicker fx:id="fechaCompra" layoutX="876.0" layoutY="317.0" />
-            <JFXComboBox fx:id="impuesto1" disable="false" editable="false" layoutX="340.0" layoutY="317.0" prefHeight="26.0" prefWidth="155.0" promptText="Impuesto" />
+            <JFXTextField fx:id="subtotal2" disable="true" layoutX="876.0" layoutY="74.0" promptText="Subtotal" />
+            <JFXTextField fx:id="precio1" disable="true" layoutX="602.0" layoutY="74.0" promptText="Precio" />
+            <Label layoutX="333.0" layoutY="184.0" text="Efectivo" />
+            <Label layoutX="577.0" layoutY="184.0" text="Cambio" />
+            <Label layoutX="876.0" layoutY="40.0" text="Subtotal" />
+            <Label layoutX="602.0" layoutY="40.0" prefHeight="16.0" prefWidth="155.0" text="Precio" />
+            <Label fx:id="error" layoutX="584.0" layoutY="244.0" textFill="RED" />
+            <Button layoutX="203.0" layoutY="455.0" mnemonicParsing="false" onAction="#atras" text="atras" />
          </children>
     </AnchorPane>
   </children>

@@ -41,7 +41,7 @@ public class ModelImpuesto {
                    new ModelImpuesto(
                            datoImpuesto.getDouble("valor"),
                            datoImpuesto.getInt("idImpuesto"),
-                           datoImpuesto.getDate("fechaModificacion")
+                           datoImpuesto.getDate("fecha")
                    ));
        }
        datoImpuesto.close();

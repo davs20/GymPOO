@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 import static sample.Controller.Controller.urlbase;
 
-public class ControllerHome implements Initializable {
+public class ControllerHome  implements Initializable  {
 
 
     public ChoiceBox user;
@@ -43,7 +43,10 @@ public class ControllerHome implements Initializable {
         inicio2.show();
     }
 
+    public void configuracion(ActionEvent actionEvent){
+     nuevaScena(actionEvent,"Administrador/Configuracion/VistaMantenimiento.fxml","Configuracion");
 
+    }
     public void ventas(ActionEvent actionEvent) {
 
     }

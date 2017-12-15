@@ -1,6 +1,8 @@
 package sample.Model;
 
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
+import sample.Controller.ControllerUsuarios;
 import sample.Main;
 import sample.Validator.ValidatorLogin;
 
@@ -156,5 +158,24 @@ public class ModelUsuario {
         return null;
     }
 
+
+    public static void mostrarDatosUsuarioCajero(ObservableList listaUsuarios) throws SQLException {
+
+        ResultSet datoUsuario= Main.comando.executeQuery("SELECT  * FROM Usuarios where privilegio_idPrivilegio=2");
+        while (datoUsuario.next()){
+            listaUsuarios.add(
+                    new ModelUsuario(
+                    datoUsuario.getString("idUsuarios"),
+                    datoUsuario.getString("apellidos"),
+                    datoUsuario.getString("nombres"),
+                    datoUsuario.getString("apellidos"),
+                    datoUsuario.getString("correo"),
+                    datoUsuario.getString("telefono"),
+                    datoUsuario.getString("privilegio_idPrivilegio")
+
+            ));
+
+        }
+    }
 
 }

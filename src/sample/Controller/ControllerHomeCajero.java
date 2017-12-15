@@ -11,7 +11,7 @@ import java.io.IOException;
 
 import static sample.Controller.Controller.urlbase;
 
-public class ControllerHomeCajero {
+public class ControllerHomeCajero extends ControllerUsuarios {
 
 
     private void nuevaScena(String scena, ActionEvent actionEvent) throws IOException {

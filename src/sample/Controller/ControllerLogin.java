@@ -32,6 +32,10 @@ public class ControllerLogin implements  Initializable {
     public Button entrar;
     public Label error;
     public AnchorPane panel;
+
+    public static  String idUsuario;
+    public static  String nombreUsuario;
+
     private void nuevaScena(String scena, ActionEvent actionEvent) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource(urlbase.concat(scena)));
         Scene nueva = new Scene(fxml);
@@ -75,6 +79,7 @@ public class ControllerLogin implements  Initializable {
     public void iniciarSesion(ActionEvent actionEvent) {
         try {
             ModelUsuario user=ModelUsuario.validarCredenciales(new ValidatorLogin(), usuario.getText(), contrasen.getText());
+            idUsuario=usuario.getText();
             switch (user.getIdPrivilegio()) {
                 case "1":
                     nuevaScena("home.fxml", actionEvent);

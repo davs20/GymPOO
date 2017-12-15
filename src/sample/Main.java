@@ -30,6 +30,7 @@ public class Main extends Application {
 
     @Override
 
+
     public void start(Stage primaryStage) throws Exception {
         abrirConexion();
         Parent root = FXMLLoader.load(getClass().getResource("../sample/View/login.fxml"));

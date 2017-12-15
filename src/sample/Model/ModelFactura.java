@@ -4,6 +4,7 @@ package sample.Model;
 import javafx.beans.property.*;
 import javafx.collections.ObservableList;
 
+import javafx.scene.control.Alert;
 import sample.Controller.ControllerFactura;
 import sample.Main;
 import sample.Validator.ValidatorVenta;
@@ -11,7 +12,9 @@ import sample.Validator.ValidatorVenta;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 
 public class ModelFactura {
@@ -105,32 +108,50 @@ public class ModelFactura {
         ResultSet dato = Main.comando.executeQuery("SELECT idVenta FROM Factura ORDER BY Factura.idVenta DESC LIMIT 1");
 
         dato.next();
-      int noFactura=  dato.getInt("idVenta")+1;
-      dato.close();
-        return ""+noFactura;
+        int noFactura = dato.getInt("idVenta") + 1;
+        dato.close();
+        return "" + noFactura;
     }
 
 
-    public static void insertarFactura(ValidatorVenta datosValidados, String servicio1, String emision, String cliente,Integer noFactura) throws SQLException {
+    public static Boolean insertarFactura(ValidatorVenta datosValidados, ObservableList<ModelFactura> listaFactura, String servicio1, String emision, String cliente, Integer noFactura) throws SQLException {
 
 
-        ResultSet datosCai = Main.comando.executeQuery("SELECT  rangoOtorgado FROM AsignacionCai ORDER BY  fechaOtorgado DESC  LIMIT  1");
+        ResultSet datosCai = Main.comando.executeQuery("SELECT  rangoOtorgado,CURRENT_DATE AS fechaActual,fechaLimite  FROM AsignacionCai ORDER BY  fechaLimite DESC  LIMIT  1");
         datosCai.next();
-        int rango=datosCai.getInt("rangoOtorgado");
-        datosCai.close();
 
-        if (noFactura <= rango) {
+        int rango = datosCai.getInt("rangoOtorgado");
+        if (noFactura <= rango && datosCai.getDate("fechaActual").before(datosCai.getDate("fechaLimite"))) {
             Main.comando.execute("INSERT  INTO  Factura " +
                     "( Sucursal_idSucursal,  subtotal, cambio, efectivo, Cliente_idCliente, " +
                     " PuntoEmision_AsignacionCai_CAI,idServicio)  VALUES(" +
                     "1,'" + datosValidados.getSubtotal() + "','" + datosValidados.getCambio() + "','" + datosValidados.getEfectivo() + "','" + cliente + "','" + emision + "','" + servicio1 + "') ");
+            Calendar c1 = Calendar.getInstance();
+            Calendar c2 = new GregorianCalendar();
+            datosCai.close();
+            ResultSet fechaEx=Main.comando.executeQuery("SELECT DATE_ADD(NOW(), INTERVAL duracion MONTH) as fechaExperiacion,CURRENT_DATE AS fechaActual,Servicio.nombre FROM Servicio WHERE idMembresia='"+servicio1+"' ");
+            fechaEx.next();
+            listaFactura.add(new ModelFactura(
+                    noFactura,
+                    datosValidados.getSubtotal(),
+                    datosValidados.getImpuesto(),
+                    datosValidados.getPrecio(),
+                    fechaEx.getString("nombre"),
+                    fechaEx.getDate("fechaExperiacion"),
+                    fechaEx.getDate("fechaActual"),
+                    servicio1));
+            fechaEx.close();
+
+            return true;
+        } else {
+            return false;
         }
 
 
     }
 
     public static void mostrarFactura(String id, ObservableList<ModelFactura> listaFactura) throws SQLException {
-        ResultSet datosFactura = Main.comando.executeQuery("SELECT  * FROM  Factura INNER  JOIN Servicio ON Servicio.idMembresia=Factura.idServicio INNER join Impuesto on Impuesto.idImpuesto=Servicio.idImpuesto WHERE Cliente_idCliente='" + id + "'");
+        ResultSet datosFactura = Main.comando.executeQuery("SELECT  *,DATE_ADD(NOW(), INTERVAL Servicio.duracion MONTH) as fechaExpiracion FROM  Factura INNER  JOIN Servicio ON Servicio.idMembresia=Factura.idServicio INNER join Impuesto on Impuesto.idImpuesto=Servicio.idImpuesto WHERE Cliente_idCliente='" + id + "'");
         while (datosFactura.next()) {
             listaFactura.add(new ModelFactura(
                     datosFactura.getInt("idVenta"),
@@ -139,7 +160,7 @@ public class ModelFactura {
                     datosFactura.getDouble("precio"),
                     datosFactura.getString("nombre"),
                     datosFactura.getDate("fecha"),
-                    datosFactura.getDate("fecha"),
+                    datosFactura.getDate("fechaExpiracion"),
                     datosFactura.getString("idServicio")
 
             ));
@@ -148,6 +169,19 @@ public class ModelFactura {
         datosFactura.close();
     }
 
+    public static ResultSet imprimirFactura(String id) throws SQLException {
+        ResultSet datoFactura = Main.comando.executeQuery("Select * FROM Factura INNER JOIN Servicio " +
+                "ON  Servicio.idMembresia=Factura.idServicio INNER  JOIN Impuesto " +
+                "ON Servicio.idImpuesto = Impuesto.idImpuesto INNER  JOIN Cliente " +
+                "ON Factura.Cliente_idCliente = Cliente.idCliente INNER JOIN AsignacionCai " +
+                "ON AsignacionCai.CAI=Factura.PuntoEmision_AsignacionCai_CAI INNER  JOIN PuntoEmision ON PuntoEmision.AsignacionCai_CAI=AsignacionCai.CAI WHERE idVenta='" + id + "' GROUP BY Cliente.idCliente ");
+        return datoFactura;
+    }
+
+    public static String getCAI(String id) throws SQLException {
+        ResultSet datoCAI = Main.comando.executeQuery("SELECT CAI FROM Factura WHERE idVenta='" + id + "'");
+        return "";
+    }
 
     public static ResultSet setPrecio(String id) throws SQLException {
 

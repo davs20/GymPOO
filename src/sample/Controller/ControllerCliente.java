@@ -38,19 +38,28 @@ public class ControllerCliente implements Initializable {
     public TableColumn<ModelCliente, Date> fechaIngreso;
     public TableColumn<ModelCliente, String> id;
     public TableColumn<ModelCliente, String> memb;
-    public TableColumn<ModelCliente, String> acciones;
+    public TableColumn<ModelCliente, String> estado;
     public TextField buscar;
     public static Button boton;
 
     ////---------------------------------///
     public String Id;
 
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
+    }
 
     //-----------datosMedicos--------///
     public TextField enfermedad;
     public ComboBox<String> tipo;
 
     //-------------------------------///
+
+
 
 
     public void insertarCliente(ActionEvent actionEvent) {
@@ -65,11 +74,39 @@ public class ControllerCliente implements Initializable {
             primaryStage.setScene(new Scene(page, 720, 710));
             ControllerDetalleCliente controller = loader.getController();
             controller.setStage(primaryStage);
+
+
             primaryStage.showAndWait();
             primaryStage.setResizable(true);
-            page=null;
-            primaryStage=null;
-            loader=null;
+            page = null;
+            primaryStage = null;
+            loader = null;
+            System.gc();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void updateCliente(ActionEvent actionEvent){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../View/Administrador/Cliente/updateCliente.fxml"));
+        try {
+            VBox page = (VBox) loader.load();
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("Nuevo Cliente");
+            primaryStage.initModality(Modality.WINDOW_MODAL);
+            primaryStage.initOwner((Stage) ((Button) actionEvent.getSource()).getScene().getWindow());
+            primaryStage.setScene(new Scene(page, 720, 710));
+            ControllerDetalleCliente controller = loader.getController();
+            controller.setStage(primaryStage);
+            controller.setCliente(tblCliente.getSelectionModel().getSelectedIndex());
+
+            primaryStage.showAndWait();
+            primaryStage.setResizable(true);
+            page = null;
+            primaryStage = null;
+            loader = null;
             System.gc();
         } catch (IOException e) {
             e.printStackTrace();
@@ -94,9 +131,9 @@ public class ControllerCliente implements Initializable {
             menu.setTitle("Inicio");
             menu.setScene(nueva);
             menu.show();
-            nueva=null;
-            menu=null;
-            fxml=null;
+            nueva = null;
+            menu = null;
+            fxml = null;
             System.gc();
         } catch (IOException e) {
             e.printStackTrace();
@@ -111,7 +148,6 @@ public class ControllerCliente implements Initializable {
         ModelCliente.buscar(buscar.getText(), lista);
 
 
-
     }
 
     public Button getBoton() {
@@ -120,14 +156,14 @@ public class ControllerCliente implements Initializable {
 
 
     public void recargarTabla(ActionEvent actionEvent) {
+        tblCliente.getSelectionModel().clearSelection();
         lista.clear();
         try {
             ModelCliente.mostrarTodos(lista);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        Runtime rt = Runtime.getRuntime();
-        System.out.println(rt.freeMemory());
+        System.gc();
     }
 
     @Override
@@ -143,22 +179,40 @@ public class ControllerCliente implements Initializable {
         memb.setCellValueFactory(new PropertyValueFactory<>("membresia"));
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         fechaIngreso.setCellValueFactory(new PropertyValueFactory<ModelCliente, Date>("fecha"));
-        acciones.setCellValueFactory(new PropertyValueFactory<ModelCliente, String>("acciones"));
+        estado.setCellValueFactory(new PropertyValueFactory<ModelCliente, String>("estado"));
         tblCliente.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ModelCliente>() {
             @Override
             public void changed(ObservableValue<? extends ModelCliente> observable, ModelCliente oldValue, ModelCliente newValue) {
-                System.out.println(newValue.getId());
+                if (newValue.getId() != null) {
+                    setId(newValue.getId());
+                }
+
             }
 
 
         });
 
 
-
     }
 
 
-    public void desabilitarCliente() {
+    public void habilitarCliente(ActionEvent actionEvent) {
+        try {
+            ModelCliente.habilitar(getId());
+            recargarTabla(actionEvent);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void desabilitarCliente(ActionEvent actionEvent) {
+        try {
+            ModelCliente.desabilitar(getId());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        recargarTabla(actionEvent);
+
 
     }
 
@@ -171,7 +225,7 @@ public class ControllerCliente implements Initializable {
 
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../View/Administrador/Cliente/Cliente.fxml"));
+            loader.setLocation(getClass().getResource("../View/Administrador/Cliente/updateCliente.fxml"));
             try {
                 VBox page = (VBox) loader.load();
                 Stage primaryStage = new Stage();
@@ -179,14 +233,14 @@ public class ControllerCliente implements Initializable {
                 primaryStage.initModality(Modality.WINDOW_MODAL);
                 primaryStage.initOwner((Stage) ((Button) actionEvent.getSource()).getScene().getWindow());
                 primaryStage.setScene(new Scene(page, 900, 900));
-                ControllerDetalleCliente controller = loader.getController();
+                ControllerDetalleClienteUpdate controller = loader.getController();
                 controller.setStage(primaryStage);
-                controller.setCliente(tblCliente.getSelectionModel().getSelectedIndex());
+                controller.setCliente(getId());
                 primaryStage.showAndWait();
                 primaryStage.setResizable(true);
-                loader=null;
-                primaryStage=null;
-                controller=null;
+                loader = null;
+                primaryStage = null;
+                controller = null;
                 Runtime rt = Runtime.getRuntime();
                 System.out.println(rt.freeMemory());
 

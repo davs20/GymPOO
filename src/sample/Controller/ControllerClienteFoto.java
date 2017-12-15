@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -22,12 +23,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.*;
+import sample.Model.ModelCliente;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 
@@ -55,7 +59,7 @@ public class ControllerClienteFoto  implements Initializable  {
     @FXML
     ImageView imgWebCamCapturedImage;
 
-    private class WebCamInfo {
+    public static class WebCamInfo {
 
         private String webCamName;
         private int webCamIndex;
@@ -82,7 +86,7 @@ public class ControllerClienteFoto  implements Initializable  {
             return webCamName;
         }
     }
-    private  String direccion;
+
     private BufferedImage grabbedImage;
     private Webcam selWebCam = null;
     private boolean stopCamera = false;
@@ -90,13 +94,7 @@ public class ControllerClienteFoto  implements Initializable  {
 
     private String cameraListPromptText = "Elija una Camara";
 
-    public String getDireccion() {
-        return direccion;
-    }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -240,7 +238,18 @@ public class ControllerClienteFoto  implements Initializable  {
 
         try {
 
-            ImageIO.write(selWebCam.getImage(), "PNG", new File(this.direccion+".png"));
+            DirectoryChooser fileChooser = new DirectoryChooser();
+            fileChooser.setTitle("Buscar Carpeta");
+            Stage stage=new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner((Stage) ((Button) event.getSource()).getScene().getWindow());
+            stage.setResizable(false);
+            File doc= fileChooser.showDialog(stage);
+           // String foto=doc.getAbsolutePath()+"/"+this.direccion+".png";
+            ImageIO.write(selWebCam.getImage(), "PNG", new File(doc.getAbsolutePath()+"/"+""+".png"));
+
+           // ModelCliente.updateFoto(foto,direccion);
         } catch (IOException e) {
             e.printStackTrace();
         }

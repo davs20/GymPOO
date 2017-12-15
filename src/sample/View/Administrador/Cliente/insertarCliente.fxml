@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTimePicker?>
 <?import com.jfoenix.validation.DoubleValidator?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -17,12 +17,17 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="690.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerDetalleCliente">
+<VBox prefHeight="747.0" prefWidth="761.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerDetalleCliente">
   <children>
     <MenuBar prefHeight="29.0" prefWidth="610.0" VBox.vgrow="NEVER">
       <menus>
@@ -63,31 +68,30 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="651.0" prefWidth="641.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="721.0" prefWidth="808.0" VBox.vgrow="ALWAYS">
          <children>
             <TabPane prefHeight="649.0" prefWidth="760.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab fx:id="datPersonales" text="Datos Personales">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="641.0" prefWidth="748.0">
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="665.0" prefWidth="760.0">
                            <children>
                               <ImageView fitHeight="103.0" fitWidth="129.0" layoutX="379.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                              <ScrollPane layoutX="-1.0" layoutY="-2.0" prefHeight="570.0" prefWidth="760.0">
+                              <ScrollPane layoutX="-1.0" layoutY="-2.0" prefHeight="680.0" prefWidth="762.0">
                                  <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="676.0" prefWidth="722.0">
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="671.0" prefWidth="755.0">
                                        <children>
-                                          <JFXTextField fx:id="idtxt" layoutX="42.0" layoutY="103.0" prefHeight="26.0" prefWidth="562.0" promptText="Numero De Identidad" />
-                                          <JFXTextField fx:id="nombretxt" layoutX="42.0" layoutY="180.0" prefHeight="26.0" prefWidth="562.0" promptText="Nombres" />
-                                          <JFXTextField fx:id="edadtxt" layoutX="44.0" layoutY="312.0" prefHeight="26.0" prefWidth="564.0" promptText="Edad" />
-                                          <JFXDatePicker fx:id="fecha" layoutX="43.0" layoutY="377.0" prefHeight="26.0" prefWidth="565.0" promptText="Fecha" />
-                                          <JFXTextField fx:id="correotxt" layoutX="43.0" layoutY="430.0" prefHeight="26.0" prefWidth="560.0" promptText="Correo Electronico" />
-                                          <JFXTextField fx:id="telefonotxt" layoutX="43.0" layoutY="489.0" prefHeight="26.0" prefWidth="565.0" promptText="Telefono" />
-                                          <JFXTextField fx:id="apellidotxt" layoutX="44.0" layoutY="256.0" prefHeight="26.0" prefWidth="563.0" promptText="Apellidos" />
-                                          <JFXRadioButton layoutX="26.0" layoutY="567.0" mnemonicParsing="false" text="Femenino" />
-                                          <JFXRadioButton layoutX="184.0" layoutY="567.0" mnemonicParsing="false" text="Masculino" />
-                                          <Label layoutX="43.0" layoutY="528.0" prefHeight="16.0" prefWidth="35.0" text="Sexo" />
-                                          <Button fx:id="sig" layoutX="605.0" layoutY="624.0" mnemonicParsing="false" onAction="#datosMedicos" text="Siguiente" />
-                                          <ImageView fitHeight="107.0" fitWidth="143.0" layoutX="275.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />
+                                          <JFXTextField fx:id="idtxt" layoutX="87.0" layoutY="56.0" prefHeight="26.0" prefWidth="562.0" promptText="Numero De Identidad" />
+                                          <JFXTextField fx:id="nombretxt" layoutX="87.0" layoutY="130.0" prefHeight="26.0" prefWidth="562.0" promptText="Nombres" />
+                                          <JFXTextField fx:id="edadtxt" layoutX="87.0" layoutY="297.0" prefHeight="26.0" prefWidth="564.0" promptText="Edad" />
+                                          <JFXDatePicker fx:id="fecha" layoutX="87.0" layoutY="373.0" prefHeight="26.0" prefWidth="565.0" promptText="Fecha" />
+                                          <JFXTextField fx:id="correotxt" layoutX="88.0" layoutY="449.0" prefHeight="26.0" prefWidth="560.0" promptText="Correo Electronico" />
+                                          <JFXTextField fx:id="telefonotxt" layoutX="86.0" layoutY="525.0" prefHeight="26.0" prefWidth="565.0" promptText="Telefono" />
+                                          <JFXTextField fx:id="apellidotxt" layoutX="87.0" layoutY="216.0" prefHeight="26.0" prefWidth="563.0" promptText="Apellidos" />
+                                          <JFXRadioButton fx:id="idSexo" layoutX="110.0" layoutY="601.0" mnemonicParsing="false" text="Femenino" />
+                                          <JFXRadioButton fx:id="idSexo" layoutX="264.0" layoutY="601.0" mnemonicParsing="false" text="Masculino" />
+                                          <Label layoutX="145.0" layoutY="567.0" prefHeight="16.0" prefWidth="35.0" text="Sexo" />
+                                          <Button fx:id="sig" layoutX="558.0" layoutY="583.0" mnemonicParsing="false" onAction="#datosMedicos" text="Siguiente" />
                                           <DoubleValidator layoutX="162.0" layoutY="180.0" />
                                           <DoubleValidator layoutX="207.0" layoutY="179.0" />
                                        </children>
@@ -110,7 +114,6 @@
                               <Button layoutX="451.0" layoutY="539.0" mnemonicParsing="false" onAction="#datosServicio" text="Siguiente" />
                               <Button layoutX="183.0" layoutY="539.0" mnemonicParsing="false" onAction="#datosPersonales" text="Atras" />
                               <JFXComboBox fx:id="padecimiento" layoutX="135.0" layoutY="255.0" prefWidth="150.0" />
-                              <TextField layoutX="90.0" layoutY="459.0" prefHeight="48.0" prefWidth="503.0" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -123,12 +126,9 @@
                               <Label layoutX="169.0" layoutY="285.0" text="Precio" />
                               <ImageView fitHeight="116.0" fitWidth="153.0" layoutX="371.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
                               <JFXComboBox fx:id="membresias" layoutX="164.0" layoutY="104.0" prefHeight="26.0" prefWidth="309.0" />
-                              <JFXTextField layoutX="166.0" layoutY="207.0" prefHeight="26.0" prefWidth="324.0" />
-                              <JFXTextField layoutX="161.0" layoutY="429.0" prefHeight="26.0" prefWidth="335.0" />
-                              <JFXTextField layoutX="163.0" layoutY="309.0" prefHeight="26.0" prefWidth="330.0" />
-                              <JFXTimePicker layoutX="514.0" layoutY="372.0" prefHeight="29.0" prefWidth="174.0" />
-                              <Label layoutX="169.0" layoutY="191.0" text="Duracion" />
-                              <Label layoutX="163.0" layoutY="401.0" text="Tiempo Restante" />
+                              <JFXTextField disable="true" layoutX="166.0" layoutY="207.0"  prefHeight="26.0" prefWidth="324.0" fx:id="duracion" />
+                              <JFXTextField fx:id="precio" disable="true" layoutX="163.0" layoutY="309.0" prefHeight="26.0" prefWidth="330.0" />
+                              <Label layoutX="169.0" layoutY="191.0" text="Duracion(Meses)" />
                               <Button layoutX="219.0" layoutY="529.0" mnemonicParsing="false" onAction="#atrasDatMedicos" text="atras" />
                               <Button layoutX="309.0" layoutY="529.0" mnemonicParsing="false" onAction="#datoFoto" text="siguiente" />
                            </children>
@@ -137,14 +137,57 @@
                   </Tab>
                   <Tab fx:id="datFoto" text="Foto">
                       <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ImageView fx:id="imgWebCamCapturedImage" fitHeight="150.0" fitWidth="200.0" layoutX="280.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" />
-                              <JFXButton layoutX="316.0" layoutY="472.0" mnemonicParsing="false" onAction="#guardarTodo" text="Guardar Todo" />
-                              <JFXButton layoutX="548.0" layoutY="233.0" mnemonicParsing="false" onAction="#setFoto" text="Guardar Foto" />
-                              <JFXButton layoutX="154.0" layoutY="472.0" mnemonicParsing="false" text="Atras" />
-                           </children>
-                          </AnchorPane>
+                          <BorderPane prefHeight="690.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+                              <bottom>
+                                  <FlowPane fx:id="fpBottomPane" alignment="CENTER" columnHalignment="CENTER" hgap="50.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color:#ccc;">
+                                      <children>
+                                          <Button fx:id="btnStartCamera" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#startCamera" prefHeight="50.0" prefWidth="153.0" text="Iniciar">
+                                              <font>
+                                                  <Font name="Segoe UI" size="18.0" fx:id="x1" />
+                                              </font>
+                                          </Button>
+                                          <Button fx:id="btnStopCamera" font="$x1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stopCamera" prefHeight="50.0" prefWidth="158.0" text="Detener" />
+                                          <Button fx:id="btnDisposeCamera" font="$x1" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#disposeCamera" prefHeight="49.0" prefWidth="172.0" text="Guardar Todo" />
+                                      </children>
+                                  </FlowPane>
+                              </bottom>
+                              <center>
+                                  <BorderPane fx:id="bpWebCamPaneHolder" prefHeight="200.0" prefWidth="200.0">
+                                      <center>
+                                          <ImageView fx:id="imgWebCamCapturedImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+                                      </center>
+                                  </BorderPane>
+                              </center>
+                              <top>
+                                  <GridPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" style="-fx-background-color:#ccc;&#10;">
+                                      <children>
+                                          <Label text="Foto Para Clientes" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.rowSpan="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                              <font>
+                                                  <Font name="Segoe UI" size="34.0" />
+                                              </font>
+                                              <GridPane.margin>
+                                                  <Insets top="10.0" />
+                                              </GridPane.margin>
+                                          </Label>
+                                          <Label font="$x1" text="Seleccione La Camara" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                              <GridPane.margin>
+                                                  <Insets left="5.0" right="10.0" />
+                                              </GridPane.margin>
+                                          </Label>
+                                          <ComboBox fx:id="cbCameraOptions" prefHeight="35.0" prefWidth="331.0" style="-fx-font-size: 18px;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                      </children>
+                                      <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="795.0" minWidth="10.0" prefWidth="418.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="502.0" minWidth="10.0" prefWidth="482.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                  </GridPane>
+                              </top>
+                          </BorderPane>
+
                       </content>
                   </Tab>
               </tabs>
