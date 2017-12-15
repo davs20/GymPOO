@@ -1,7 +1,6 @@
 package sample.Controller;
 
 import com.jfoenix.controls.JFXTextField;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,18 +18,12 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
-import sample.Model.Model;
 import sample.Model.ModelCliente;
-import sample.Model.ModelEntrenador;
-import sample.Validator.Validator;
 import sample.Validator.ValidatorCliente;
-import sample.config.Conexion;
-import sample.config.OperacionesSQl;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 import static sample.Controller.Controller.urlbase;
@@ -46,7 +39,7 @@ public class ControllerEntrenador implements Initializable {
 
     private ObservableList<ModelCliente> listaclientes;
     public JFXTextField buscar;
-
+    public Button boton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -54,6 +47,16 @@ public class ControllerEntrenador implements Initializable {
 
         listaclientes = FXCollections.observableArrayList();
         try {
+            boton.setStyle("-fx-background-color: #3793ff; -fx-background-radius: 17%;");
+            boton.setTextFill(new Color(1, 1, 1, 1));
+
+            boton.setOnAction(new javafx.event.EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    System.out.println("hola");
+                }
+            });
+
             ModelCliente.mostrarTodos(listaclientes);
         } catch (SQLException e) {
             e.printStackTrace();

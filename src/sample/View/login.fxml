@@ -1,33 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<?import com.jfoenix.controls.JFXPasswordField?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="405.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerLogin">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="405.0" style="-fx-background-color: #E6E6E6;" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerLogin">
    <children>
-      <ImageView fitHeight="209.0" fitWidth="405.0" layoutX="3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="263.0" fitWidth="473.0" layoutX="-12.0" layoutY="-62.0">
          <image>
-            <Image url="@../../../../../Descargas/logos-de-gym-20.jpg" />
+            <Image url="@../icons/GYMTEK%20TRANSPARENTEj.png" />
          </image>
       </ImageView>
-      <Separator layoutX="15.0" layoutY="210.0" prefHeight="27.0" prefWidth="377.0" />
-      <Separator layoutX="14.0" layoutY="224.0" orientation="VERTICAL" prefHeight="290.0" prefWidth="7.0" />
-      <JFXPasswordField fx:id="contrasen" focusColor="#fbb095" layoutX="128.0" layoutY="369.0" onKeyReleased="#autentificarPass" promptText="Contrasena" />
-      <Separator layoutX="14.0" layoutY="502.0" prefHeight="27.0" prefWidth="377.0" />
-      <Separator layoutX="388.0" layoutY="224.0" orientation="VERTICAL" prefHeight="290.0" prefWidth="7.0" />
-      <JFXButton fx:id="entrar" buttonType="RAISED" layoutX="162.0" layoutY="435.0" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="37.0" prefWidth="68.0" ripplerFill="#ff2f00" style="-fx-background-color: #fbb095; -fx-border-radius: 24px;" text="Entrar" textFill="WHITE">
-         <effect>
-            <Reflection bottomOpacity="0.3" fraction="0.55" topOpacity="0.29" />
-         </effect>
+      <ImageView fitHeight="46.0" fitWidth="34.0" layoutX="117.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/contact.png" />
+         </image>
+      </ImageView>
+
+      <JFXTextField fx:id="usuario" focusColor="BLACK" layoutX="163.0" layoutY="199.0" onKeyReleased="#autentificar" promptText="ID Usuario" style=" -fx-background-color: WHITE; -fx-text-fill: BLACK; " />
+
+      <ImageView fitHeight="34.0" fitWidth="65.0" layoutX="118.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/ki.png" />
+         </image>
+      </ImageView>
+
+      <JFXPasswordField fx:id="contrasen" focusColor="BLACK" layoutX="163.0" layoutY="319.0" onKeyReleased="#autentificarPass" promptText="Contrasena" style=" -fx-background-color: WHITE;-fx-text-fill: BLACK; " />
+      <JFXButton fx:id="entrar" buttonType="RAISED" layoutX="198.0" layoutY="426.0" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="37.0" prefWidth="68.0" ripplerFill="#ff2f00" style="-fx-background-color: #000000; -fx-border-radius: 24px;" text="Entrar" textFill="WHITE">
+         
       </JFXButton>
-      <JFXTextField fx:id="usuario" focusColor="RED" layoutX="128.0" layoutY="298.0" onKeyReleased="#autentificar" promptText="ID Usuario" />
+
       <Label fx:id="error" layoutX="127.0" layoutY="335.0" prefHeight="17.0" prefWidth="142.0" />
    </children>
 </AnchorPane>

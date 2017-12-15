@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <SplitPane dividerPositions="0.6278195488721805" layoutY="-1.0" prefHeight="500.0" prefWidth="800.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView fx:id="tablaMembresia" layoutX="27.0" layoutY="84.0" prefHeight="329.0" prefWidth="447.0">
+                    <columns>
+                      <TableColumn fx:id="nombreMembresiaCL" prefWidth="147.0" text="Nombre de Membresia" />
+                      <TableColumn fx:id="precioMembresiaCL" minWidth="3.0" prefWidth="46.0" text="Precio" />
+                        <TableColumn fx:id="descripcionMembresiaCL" prefWidth="148.0" text="Descripcion" />
+                        <TableColumn fx:id="duracionMembresiaCL" prefWidth="105.0" text="Duracion (Meses)" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="163.0" layoutY="36.0" text="Lista de  Membresias" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="334.0">
+               <children>
+                  <Label layoutX="28.0" layoutY="107.0" text="Nombre :" />
+                  <Label layoutX="29.0" layoutY="149.0" text="Precio :" />
+                  <Label layoutX="30.0" layoutY="188.0" text="Duracion :" />
+                  <Label layoutX="31.0" layoutY="241.0" text="Descripcion :" />
+                  <JFXTextField fx:id="nombreMembresiaFT" layoutX="89.0" layoutY="94.0" />
+                  <JFXTextField fx:id="precioMembresiaFT" layoutX="76.0" layoutY="136.0" />
+                  <JFXTextField fx:id="duracionMembresiaFT" layoutX="86.0" layoutY="176.0" />
+                  <Label layoutX="76.0" layoutY="43.0" text="Datos de Membresia">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXTextArea fx:id="descripcionMembresiaFT" layoutX="32.0" layoutY="265.0" prefHeight="77.0" prefWidth="243.0" />
+                  <JFXButton fx:id="modificarMembresiaBT" buttonType="RAISED" layoutX="15.0" layoutY="385.0" onAction="#modificarMembresiaBT" style="-fx-background-color: #4FC3F7;" text="Modificar" />
+                  <JFXButton fx:id="eliminarMembresiaBT" buttonType="RAISED" layoutX="89.0" layoutY="385.0" onAction="#eliminarMembresiaBT" style="-fx-background-color: #FF8a65;" text="Eliminar" />
+                  <JFXButton fx:id="nuevoMembresiaBT" buttonType="RAISED" layoutX="154.0" layoutY="385.0" onAction="#nuevoMembresiaBT" style="-fx-background-color: #7986cb;" text="Nuevo" />
+                  <JFXButton fx:id="guardarMembresiaBT" buttonType="RAISED" layoutX="211.0" layoutY="385.0" onAction="#guardarMembresiaBT" style="-fx-background-color: #66bb6a;" text="Guardar" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
