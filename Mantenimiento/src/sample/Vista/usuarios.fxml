@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="439.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controlador.usuarioController">
+   <children>
+      <SplitPane dividerPositions="0.3867735470941884" prefHeight="542.0" prefWidth="1000.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="558.0" prefWidth="418.0">
+               <children>
+                  <JFXButton fx:id="nuevoUsuarioBT" buttonType="RAISED" layoutX="27.0" layoutY="390.0" onAction="#nuevoBT" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: #d2d2d2;" text="Nuevo ">
+                     <font>
+                        <Font name="Bodoni MT" size="12.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0">
+                           <image>
+                              <Image url="@../iconos/icons8_Add_User_Male_48px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="guardarUsuarioBT" buttonType="RAISED" layoutX="243.0" layoutY="389.0" onAction="#guardarBT" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: #d2d2d2d2;" text="Guardar ">
+                     <font>
+                        <Font name="Bodoni MT" size="12.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0">
+                           <image>
+                              <Image url="@../iconos/Save_48px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="eliminarUsuarioBT" buttonType="RAISED" layoutX="27.0" layoutY="435.0" onAction="#eliminarBT" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: #d2d2d2;" text="Eliminar">
+                     <font>
+                        <Font name="Bodoni MT" size="12.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0">
+                           <image>
+                              <Image url="@../iconos/icons8_Trash_Can_50px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="modificarUsuarioBT" buttonType="RAISED" layoutX="130.0" layoutY="389.0" onAction="#modificarBT" prefHeight="27.0" prefWidth="91.0" style="-fx-background-color: #d2d2d2;" text="Modificar">
+                     <font>
+                        <Font name="Bodoni MT" size="12.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0">
+                           <image>
+                              <Image url="@../iconos/Sync_48px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXTextField fx:id="nombresUsuarioTF" layoutX="75.0" layoutY="99.0" promptText="Nombres del Usuario" style="-fx-background-color: #FFFFFF;" />
+                  <JFXTextField fx:id="contrasenaUsuarioTF" layoutX="75.0" layoutY="316.0" promptText="Contrasena" />
+                  <JFXTextField fx:id="apellidosUsuarioTF" layoutX="221.0" layoutY="99.0" promptText="Apellidos del Usuario" />
+                  <JFXTextField fx:id="correoUsuarioTF" layoutX="75.0" layoutY="153.0" promptText="Correo Electronico" />
+                  <JFXTextField fx:id="idUsuarioTF" layoutX="75.0" layoutY="264.0" promptText="ID" />
+                  <JFXTextField fx:id="telefonoUsuarioTF" layoutX="75.0" layoutY="206.0" promptText="Telefono" />
+                  <ComboBox fx:id="cmbPrivilegio" layoutX="228.0" layoutY="265.0" prefWidth="150.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <opaqueInsets>
+                        <Insets bottom="2.0" right="1.0" />
+                     </opaqueInsets>
+                  </ComboBox>
+                  <Label layoutX="112.0" layoutY="25.0" text="Datos Usuario">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <ImageView layoutX="14.0" layoutY="88.0">
+                     <image>
+                        <Image url="@../iconos/Torso_48px.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="26.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../iconos/Human%20Head_48px.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="28.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../iconos/Gmail_96px.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="24.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../iconos/Phone_96px.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="24.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../iconos/Identity%20Theft_48px.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="24.0" layoutY="314.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../iconos/Key_96px.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="578.0" prefWidth="444.0">
+               <children>
+                  <TableView fx:id="tablaUsuario" layoutX="1.0" layoutY="153.0" prefHeight="387.0" prefWidth="609.0">
+                    <columns>
+                      <TableColumn fx:id="idUsuarioCL" text="Id Usuario" />
+                      <TableColumn fx:id="contrasenaUsuarioCL" minWidth="5.0" prefWidth="94.0" text="Contrasena" />
+                        <TableColumn fx:id="nombresUsuarioCL" minWidth="0.0" prefWidth="79.0" text="Nombres" />
+                        <TableColumn fx:id="apellidosUsuarioCL" text="Apellido" />
+                        <TableColumn fx:id="correoUsuarioCL" prefWidth="103.0" text="Correo" />
+                        <TableColumn fx:id="telefonoUsuarioCL" maxWidth="238.0" prefWidth="79.0" text="Telefono" />
+                        <TableColumn fx:id="privilegioUsuarioCL" prefWidth="90.0" text="Privilegio" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="244.0" layoutY="51.0" text="Usuarios">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="67.0" fitWidth="91.0" layoutX="372.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../iconos/User%20Group%20Man%20Woman_96px.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

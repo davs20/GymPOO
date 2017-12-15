@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="921.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.29797979797979796" prefHeight="529.0" prefWidth="919.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="382.0" prefWidth="208.0">
+               <children>
+                  <Button fx:id="nuevoBT" layoutX="11.0" layoutY="449.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" text="Nuevo">
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../iconos/Add%20List_96px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="modificarBT" layoutX="11.0" layoutY="397.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" text="Modificar">
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../iconos/Sync_48px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="guardarBT" layoutX="156.0" layoutY="397.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="100.0" text="Guardar">
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../iconos/Save_48px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <TextField fx:id="idClienteSeguimientoTF" layoutX="49.0" layoutY="73.0" prefHeight="25.0" prefWidth="160.0" promptText="Id del Cliente" />
+                  <TextField fx:id="pesoSeguimientoTF" layoutX="49.0" layoutY="202.0" prefHeight="25.0" prefWidth="160.0" promptText="Peso en libras" />
+                  <TextField fx:id="grasaSeguimientoTF" layoutX="49.0" layoutY="268.0" prefHeight="25.0" prefWidth="160.0" promptText="Porcentaje de Grasa" />
+                  <TextField fx:id="alturaSeguimientoTF" layoutX="49.0" layoutY="331.0" prefHeight="25.0" prefWidth="160.0" promptText="Altura" />
+                  <Text layoutX="31.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nuevo Seguimiento">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="29.0" fitWidth="31.0" layoutX="14.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../iconos/Badge_96px.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="29.0" fitWidth="31.0" layoutX="13.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../iconos/icons8_Weightlifting_48px_1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="29.0" fitWidth="31.0" layoutX="11.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../iconos/icons8_Scale_48px_1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="29.0" fitWidth="31.0" layoutX="13.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../iconos/Flex%20Biceps_48px_1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="29.0" fitWidth="31.0" layoutX="13.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../iconos/icons8_Height_48px.png" />
+                     </image>
+                  </ImageView>
+                  <ComboBox fx:id="cmbNombreCliente" layoutX="60.0" layoutY="135.0" prefWidth="150.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView fx:id="tablaSeguimiento" layoutX="-2.0" layoutY="137.0" prefHeight="387.0" prefWidth="647.0">
+                    <columns>
+                      <TableColumn fx:id="idClienteSeguimientoCL" editable="false" prefWidth="98.0" text="ID Cliente" />
+                      <TableColumn fx:id="nombreClienteSeguimientoCL" prefWidth="125.0" text="Nombre Cliente" />
+                        <TableColumn fx:id="pesoSeguimientoCL" prefWidth="105.0" text="Peso" />
+                        <TableColumn fx:id="grasaSeguimientoCL" minWidth="1.0" prefWidth="103.0" text="\% Grasa" />
+                        <TableColumn fx:id="alturaSeguimientoCL" minWidth="0.0" prefWidth="81.0" text="Altura" />
+                        <TableColumn fx:id="fechaModificacionCL" minWidth="4.0" prefWidth="126.0" text="Fecha" />
+                    </columns>
+                  </TableView>
+                  <Button id="busc" fx:id="buscar" layoutX="536.0" layoutY="90.0" mnemonicParsing="false" text="Buscar">
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../iconos/Search%20Property_40px_1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <TextField fx:id="buscarID" layoutX="294.0" layoutY="94.0" prefHeight="25.0" prefWidth="238.0" promptText="ID del Cliente" />
+                  <Text layoutX="26.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seguimiento" wrappingWidth="209.748046875">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="78.0" fitWidth="84.0" layoutX="226.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../iconos/Report%20Card_96px.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</Pane>

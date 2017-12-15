@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="274.0" prefWidth="584.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controlador.impuestoController">
+   <children>
+      <SplitPane dividerPositions="0.38108882521489973" prefHeight="274.0" prefWidth="584.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label layoutX="37.0" layoutY="50.0" text="Cambiar Impuesto">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nuevoValorTF" layoutX="109.0" layoutY="131.0" prefHeight="25.0" prefWidth="49.0" />
+                  <Label layoutX="23.0" layoutY="135.0" text="Nuevo Valor :">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnActualizar" buttonType="RAISED" layoutX="65.0" layoutY="188.0" onAction="#btnActualizar" style="-fx-background-color: #81C784;" text="Actulizar Impuesto" textFill="#f5f4f4" />
+                  <Label layoutX="163.0" layoutY="135.0" text="\%">
+                     <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="458.0" prefWidth="429.0">
+               <children>
+                  <Label layoutX="116.0" layoutY="41.0" text="Impuesto Actual">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tablaImpuesto" layoutX="34.0" layoutY="98.0" prefHeight="147.0" prefWidth="303.0">
+                    <columns>
+                      <TableColumn fx:id="valorCL" prefWidth="146.0" text="Valor" />
+                      <TableColumn fx:id="fechaModificacionCL" prefWidth="154.0" text="Fecha de Modificacion" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="34.0" layoutY="82.0" text="Seleccione un Registro">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="258.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../iconos/Tax_96px.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

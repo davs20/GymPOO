@@ -18,7 +18,7 @@ import static java.lang.Integer.toBinaryString;
 public class Main extends Application {
     private final static String usuario = "root";
     private final static String pass = "";
-    private static String conexion = "jdbc:mysql://localhost:3306/Gym";
+    private static String conexion = "jdbc:mysql://localhost:3306/gym";
     private static Connection connection;
     public static Statement comando = null;
     private static ResultSet registro;
